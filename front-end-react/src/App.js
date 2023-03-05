@@ -1,5 +1,5 @@
 import './App.css';
-import Meniu from './Meniu';
+import Meniu from './componente/Meniu/Meniu.js';
 
 function App() {
   return (
