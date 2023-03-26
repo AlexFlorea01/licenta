@@ -1,10 +1,10 @@
 import './Meniu.css';
 import './Meniu2.css';
-import Phone from '../../imagini/phone.png';
-import Facebook from '../../imagini/facebook.png';
-import Instagram from '../../imagini/instagram.png';
-import Whatsapp from '../../imagini/whatsapp.png';
-import Logo from '../../imagini/logo.png';
+import Phone from '../../../imagini/phone.png';
+import Facebook from '../../../imagini/facebook.png';
+import Instagram from '../../../imagini/instagram.png';
+import Whatsapp from '../../../imagini/whatsapp.png';
+import Logo from '../../../imagini/logo.png';
 
 const Meniu = () => {
     return (
