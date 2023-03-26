@@ -39,21 +39,17 @@ p {
     font-size: 0.6rem;
 }
 
-.parallax-content {
+.main {
     position: relative;
     width: 100%;
     height: calc(100vh - var(--hero-gap));
-}
-
-.hero {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
-.hero img {
+.main img {
     position: absolute;
     top: 0;
     left: 0;
@@ -65,23 +61,23 @@ p {
     transform: translateZ(1px);
 }
 
-.hero .hero__title {
+.main .title {
     color: white;
     z-index: 2;
     text-align: center;
     transform: translateZ(-2px) scale(1.2);
 }
 
-.hero .hero__title p {
+.main .title p {
     margin-top: 0.5rem;
     font-size: calc(0.6rem + 0.75vmin);
 }
 
-.hero .hero__title a {
+.main .title a {
     color: white;
 }
 
-.hero::after {
+.main::after {
     content: "";
     position: absolute;
     top: 50%;

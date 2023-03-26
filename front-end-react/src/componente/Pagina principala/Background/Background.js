@@ -3,8 +3,8 @@ import './Background.css';
 
 const Background = () => {
     return (  
-        <div class="hero parallax-content"><img src={Background1} alt="Poza Background"/>
-            <div class="hero__title">
+        <div class="main"><img src={Background1} alt="Poza Background"/>
+            <div class="title">
                 <h1>Pentru un nou inceput!</h1>
             </div>
         </div>
