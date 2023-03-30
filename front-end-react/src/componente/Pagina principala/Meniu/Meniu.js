@@ -41,13 +41,13 @@ const Meniu = () => {
                 <nav>
                     <ul>
                         <li class="sub-menu-parent" tab-index="0">
-                        <a >Acasa &#9660;</a>
+                        <a >Acasă &#9660;</a>
                         <ul class="sub-menu">
-                            <li><a >Pagina Principala</a></li>
+                            <li><a >Pagina Principală</a></li>
                         </ul>
                         </li>
                         <li class="sub-menu-parent" tab-index="0">
-                        <a href="#">Contul tau &#9660;</a>
+                        <a href="#">Contul tău &#9660;</a>
                         <ul class="sub-menu">
                             <li><a >Comectare</a></li>
                             <li><a >Inregistrare</a></li>

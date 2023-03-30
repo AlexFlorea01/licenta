@@ -3,7 +3,7 @@
 
 .home-sticky-menu {
     width: 100%;
-    height: 12vh;
+    height: 13vh;
     position: absolute;
     top: 0px;
     z-index: 10;
@@ -57,7 +57,7 @@
 
 .right-upper-menu {
     height: 100%;
-    width: 10%;
+    width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +69,7 @@
 }
 
 #signup-btn {
-    height: 80%;
+    height: 95%;
     width: 90%;
     outline: none;
     border: none;
@@ -118,7 +118,7 @@
 }
 
 .lower-menu-logo img {
-    height: 40px;
+    height: 33px;
 }
 
 .logo-text {
@@ -135,11 +135,11 @@
 }
 
 .lower-menu-buttons {
-    width: 50%;
+    width: 60%;
     height: 100%;
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 2px;
-    font-size: 19px;
+    font-size: 15px;
 }
 
 #fb-icon:hover {
