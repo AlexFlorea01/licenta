@@ -27,7 +27,7 @@ const Servicii = () => {
                     </div>
             </div>
             <div className="best-services-cards-container">
-                <CardServices icon={HomeIcon} title='Gasește-ți casa visurilor' description={text1}/>
+                <CardServices icon={HomeIcon} title='Găsește-ți casa visurilor' description={text1}/>
                 <CardServices icon={PadLock} title='Proprietăți securizate' description={text2}/>
                 <CardServices icon={SettingsIcon} title='Mobilare inclusă' description={text3}/>
                 <CardServices icon={GoalIcon} title='Suport online' description={text4}/>

@@ -1,12 +1,19 @@
 import './Meniu.css';
 import './Meniu2.css';
+
 import Phone from '../../../imagini/phone.png';
 import Facebook from '../../../imagini/facebook.png';
 import Instagram from '../../../imagini/instagram.png';
 import Whatsapp from '../../../imagini/whatsapp.png';
 import Logo from '../../../imagini/logo.png';
 
+import React from 'react';
+import { useNavigate } from 'react-router';
+
 const Meniu = () => {
+
+    let navigate=useNavigate();
+
     return (
         <div className="home-sticky-menu">
         <div className="menu-container">
@@ -56,8 +63,8 @@ const Meniu = () => {
                         <li class="sub-menu-parent" tab-index="0">
                         <a href="#">Despre noi &#9660;</a>
                         <ul class="sub-menu">
-                            <li><a >Cum am inceput..</a></li>
-                            <li><a >Unde ne gasesti..</a></li>
+                            <li><a onClick={()=>{navigate('/despre')}}>Cum am inceput..</a></li>
+                            <li><a onClick={()=>{navigate('/despre')}}>Unde ne gasesti..</a></li>
                         </ul>
                         </li>
 

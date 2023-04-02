@@ -1,19 +1,25 @@
 import './App.css';
-import Background from './componente/Pagina principala/Background/Background';
-import Meniu from './componente/Pagina principala/Meniu/Meniu.js';
-import Cautare from './componente/Pagina principala/MotorCautare/Search';
-import Servicii from './componente/Pagina principala/Servicii/Servicii';
+
+import Acasa from './componente/Pagina principala/Acasa.js';
+import Despre from './componente/About/Despre';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <div className="content">
-        <Meniu/>
-        <Background/>
-        <Cautare/>
-        <Servicii/>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" component={Acasa} />
+        <Route path="/despre" component={Despre} />
+        <Route path="*">
+          <InvalidProperty text="This page do not exists!"/>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
