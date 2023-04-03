@@ -1,25 +1,29 @@
 import './App.css';
 
-import Acasa from './componente/Pagina principala/Acasa.js';
+import Acasa from './componente/Pagina principala/Acasa';
 import Despre from './componente/About/Despre';
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Routes
 } from 'react-router-dom';
 
+
+const FallbackComponent = ()=>{
+  return( 
+    <p>Aceasta pagina nu exista</p>
+  )
+}
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route exact path="/" component={Acasa} />
-        <Route path="/despre" component={Despre} />
-        <Route path="*">
-          <InvalidProperty text="This page do not exists!"/>
-        </Route>
+        <Route exact path="/" element={<Acasa/>}/>
+        <Route exact path="/despre" element={<Despre/>}/>
+        <Route path="/*" element={<FallbackComponent/>}/>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

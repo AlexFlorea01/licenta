@@ -8,7 +8,7 @@ import Whatsapp from '../../../imagini/whatsapp.png';
 import Logo from '../../../imagini/logo.png';
 
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const Meniu = () => {
 
@@ -36,7 +36,7 @@ const Meniu = () => {
             </div>
 
             <div className="lower-menu">
-                <div className="lower-menu-logo">
+                <div className="lower-menu-logo" onClick={()=>{navigate('/')}}>
                     <img src={Logo} alt="logo"/>
                     <span className="logo-text">
                         <b>
@@ -50,7 +50,7 @@ const Meniu = () => {
                         <li class="sub-menu-parent" tab-index="0">
                         <a >Acasă &#9660;</a>
                         <ul class="sub-menu">
-                            <li><a >Pagina Principală</a></li>
+                            <li><a onClick={()=>{navigate('/')}} >Pagina Principală</a></li>
                         </ul>
                         </li>
                         <li class="sub-menu-parent" tab-index="0">
