@@ -5,8 +5,13 @@ import Instagram from '../../../imagini/instagram.png';
 import Facebook from '../../../imagini/facebook.png';
 import Whatsapp from '../../../imagini/whatsapp.png';
 
+import { useNavigate,Link } from 'react-router-dom';
+
 
 const Footer = () => {
+
+    let navigate=useNavigate();
+
     return ( <div className="footer-container">
             <div className="footer-container-padding">
                 <div className="left-footer-content">
@@ -24,9 +29,15 @@ const Footer = () => {
                     <span></span>
 
                     <div className="social-media-footer-container">
-                        <img src={Facebook} alt="fb-icon" className="blue-hover"/>
-                        <img src={Instagram} alt="fb-icon" className="blue-hover"/>
-                        <img src={Whatsapp} alt="fb-icon" className="green-hover"/>
+                        <Link to="https://www.facebook.com/alex.florea.94?ref=tn_tnmn">
+                            <img src={Facebook} alt="fb-icon" className="blue-hover"/>
+                        </Link>
+                        <Link to="https://www.instagram.com/alex_florea02/">
+                            <img src={Instagram} alt="fb-icon" className="blue-hover"/>
+                        </Link>
+                        <Link to="https://web.whatsapp.com/">
+                            <img src={Whatsapp} alt="fb-icon" className="green-hover"/>
+                        </Link>
                     </div>
                 </div>
                 <div className="right-footer-content">
@@ -39,10 +50,10 @@ const Footer = () => {
                         </div>
 
                         <div className="right-footer-links-link">
-                            <span >Acasă</span>
+                            <span onClick={()=>{navigate('/')}}>Acasă</span>
                             <span >Conectare</span>
                             <span >Înregistrare</span>
-                            <span >Despre noi</span>
+                            <span onClick={()=>{navigate('/despre')}}>Despre noi</span>
                         </div>
 
                     </div>

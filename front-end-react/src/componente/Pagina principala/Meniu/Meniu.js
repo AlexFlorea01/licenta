@@ -8,7 +8,7 @@ import Whatsapp from '../../../imagini/whatsapp.png';
 import Logo from '../../../imagini/logo.png';
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Meniu = () => {
 
@@ -20,12 +20,20 @@ const Meniu = () => {
 
             <div className="upper-menu">
                 <div className="contact-menu">
+                    <Link to="https://web.whatsapp.com/">
                     <img src={Phone} alt="phonephoto" />
+                    </Link>
                     <span>0757.758.057</span>
                     <div className="upper-menu-social-media-contaier">
-                    <img src={Facebook} alt="facebookphoto" />
-                    <img src={Instagram} alt="instagramphoto" />
-                    <img src={Whatsapp} alt="wappphoto" />  
+                        <Link to="https://www.facebook.com/alex.florea.94?ref=tn_tnmn">
+                            <img src={Facebook} alt="facebookphoto" />
+                        </Link>
+                        <Link to="https://www.instagram.com/alex_florea02/">
+                            <img src={Instagram} alt="instagramphoto" />
+                        </Link>
+                        <Link to="https://web.whatsapp.com/">
+                            <img src={Whatsapp} alt="wappphoto" />
+                        </Link>
                     </div>
                 </div>
                 <div className="right-upper-menu">
