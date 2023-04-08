@@ -64,8 +64,8 @@ const Meniu = () => {
                         <li class="sub-menu-parent" tab-index="0">
                         <a href="#">Contul tău &#9660;</a>
                         <ul class="sub-menu">
-                            <li><a >Comectare</a></li>
-                            <li><a >Inregistrare</a></li>
+                            <li><a onClick={()=>{navigate('/conectare')}}>Conectare</a></li>
+                            <li><a onClick={()=>{navigate('/inregistrare')}}>Inregistrare</a></li>
                         </ul>
                         </li>
                         <li class="sub-menu-parent" tab-index="0">

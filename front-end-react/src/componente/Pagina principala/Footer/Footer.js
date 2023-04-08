@@ -51,8 +51,8 @@ const Footer = () => {
 
                         <div className="right-footer-links-link">
                             <span onClick={()=>{navigate('/')}}>Acasă</span>
-                            <span >Conectare</span>
-                            <span >Înregistrare</span>
+                            <span onClick={()=>{navigate('/conectare')}}>Conectare</span>
+                            <span onClick={()=>{navigate('/inregistrare')}}>Înregistrare</span>
                             <span onClick={()=>{navigate('/despre')}}>Despre noi</span>
                         </div>
 

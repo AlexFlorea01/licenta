@@ -2,6 +2,8 @@ import './App.css';
 
 import Acasa from './componente/Pagina principala/Acasa';
 import Despre from './componente/About/Despre';
+import Inregistrare from './componente/Inregistrare/Inregistrare';
+import Conectare from './componente/Conectare/Conectare';
 
 import {
   BrowserRouter,
@@ -15,12 +17,15 @@ const FallbackComponent = ()=>{
     <p>Aceasta pagina nu exista</p>
   )
 }
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Acasa/>}/>
         <Route exact path="/despre" element={<Despre/>}/>
+        <Route path="/inregistrare" element={<Inregistrare/>}/>
+        <Route path="/conectare" element={<Conectare/>}/>
         <Route path="/*" element={<FallbackComponent/>}/>
       </Routes>
     </BrowserRouter>
