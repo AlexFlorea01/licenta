@@ -1,5 +1,6 @@
 import './Inregistrare.css';
 import { useNavigate } from 'react-router-dom';
+import Meniu from '../Pagina principala/Meniu/Meniu';
 
 const Inregistrare = () => {
     
@@ -38,7 +39,7 @@ const Inregistrare = () => {
                                     <button>Inregistrare</button>
                                 </label>
                                 <label className="change-state-signin-signup">
-                                    <p onClick={()=>{navigate('/login')}}>Ai deja un cont?Conecteaza-te.</p>
+                                    <p onClick={()=>{navigate('/conectare')}}>Ai deja un cont?Conecteaza-te.</p>
                                 </label>
                         </form>
                         </div>
