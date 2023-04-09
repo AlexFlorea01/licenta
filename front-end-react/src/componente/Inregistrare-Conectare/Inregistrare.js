@@ -4,7 +4,7 @@ import Meniu from '../Pagina principala/Meniu/Meniu';
 
 const Inregistrare = () => {
     
-    let navigate = useNavigate;
+    let navigate = useNavigate();
 
     return (
         <div className="signup-container">

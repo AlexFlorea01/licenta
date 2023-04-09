@@ -2,8 +2,8 @@ import './App.css';
 
 import Acasa from './componente/Pagina principala/Acasa';
 import Despre from './componente/About/Despre';
-import Inregistrare from './componente/Inregistrare/Inregistrare';
-import Conectare from './componente/Conectare/Conectare';
+import Inregistrare from './componente/Inregistrare-Conectare/Inregistrare';
+import Conectare from './componente/Inregistrare-Conectare/Conectare';
 
 import {
   BrowserRouter,
