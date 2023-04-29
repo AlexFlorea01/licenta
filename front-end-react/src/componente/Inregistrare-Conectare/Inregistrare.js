@@ -28,13 +28,20 @@ const Inregistrare = () => {
 
     const trimiteModifIntrari = (event) => {
         event.preventDefault(); // previne reincarcarea browserului la submit buton
-        if(dateIntrare.name.length == 0 || dateIntrare.email.length == 0 || dateIntrare.password.length == 0)
+        if(dateIntrare.nume.length == 0 || dateIntrare.email.length == 0 || dateIntrare.parola.length == 0)
         {
             console.log("Nu ai completat unul dintre campuri!")
         }
         else
         {
-
+            if(dateIntrare.parola != dateIntrare.repetaParola)
+            {
+                console.log("Parole diferite.")
+            }
+            else
+            {
+                
+            }
         }
     }
      
