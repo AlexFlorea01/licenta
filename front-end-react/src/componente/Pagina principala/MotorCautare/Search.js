@@ -2,6 +2,35 @@ import './Search.css';
 
 const Cautare = () => {
 
+        const[dateIntrare, seteazaDateIntrare] = useState({
+        locatie:'',
+        tip:'',
+        status: '',
+        material: '',
+        pret_de_la: '',
+        pret_pana_la:'',
+        camere: '',
+        bai: '',
+        paturi: '',
+    })
+
+    const schimbaDateIntrare = (ceTastezNouEvent)=>{
+        seteazaDateIntrare((dateIntrareInitiale)=>{
+            let  dateIntrareNoi = {...dateIntrareInitiale};
+             dateIntrareNoi[ceTastezNouEvent.target.name] = ceTastezNouEvent.target.value; //.name in html diferit pentru fiecare select
+            return  dateIntrareNoi;
+        })
+    }
+    
+    useEffect(()=>{
+        console.log(dateIntrare)
+    },[dateIntrare])
+
+    const trimiteModifIntrari = (event) => {
+        event.preventDefault(); // previne reincarcarea browserului la submit buton
+        
+    }
+
     return (  
         <div className="home-search-component">
                 <div className="home-search-form-itself">
@@ -14,7 +43,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select name="location">
+                                    <select onChange={schimbaDateIntrare} name="location">
                                         <option value="">-</option>
                                         <option value="europe">Moldova</option>
                                         <option value="north-america">Maramureș</option>
@@ -30,7 +59,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select name="type">
+                                    <select  onChange={schimbaDateIntrare} name="type">
                                         <option value="">-</option>
                                         <option value="apartament">Apartament</option>
                                         <option value="building area">Building area</option>
@@ -46,7 +75,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select name="status">
+                                    <select onChange={schimbaDateIntrare} name="status">
                                         <option value="">-</option>
                                         <option value="available">Available</option>
                                         <option value="rent agreed ">Rent agreed </option>
@@ -62,7 +91,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select name="material">
+                                    <select onChange={schimbaDateIntrare} name="material">
                                         <option value="">-</option>
                                         <option value="block">Block</option>
                                         <option value="brick">Brick</option>
@@ -80,7 +109,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="number" name="price_from"/>
+                                    <input type="number" onChange={schimbaDateIntrare} name="price_from"/>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +121,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div className="number-input-box">
-                                        <input type="number" name="price_to"/>
+                                        <input type="number" onChange={schimbaDateIntrare} name="price_to"/>
                                     </div>
                             </div>
                         
@@ -103,7 +132,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select name="rooms">
+                                        <select onChange={schimbaDateIntrare} name="rooms">
                                             <option value="">-</option>
                                             <option value="+1">+1</option>
                                             <option value="+2">+2</option>
@@ -119,7 +148,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select name="baths">
+                                        <select onChange={schimbaDateIntrare} name="baths">
                                             <option value="">-</option>
                                             <option value="+1">+1</option>
                                             <option value="+2">+2</option>
@@ -134,7 +163,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select name="beds">
+                                        <select onChange={schimbaDateIntrare} name="beds">
                                         <option value="">-</option>
                                             <option value="+1">+1</option>
                                             <option value="+2">+2</option>
@@ -142,7 +171,7 @@ const Cautare = () => {
                                         </select>
                                     </div>
                             </div>
-                            <div className="form-box-container">
+                            <div className="form-box-container" onClick={trimiteModifIntrari}>
                                 <span style={{color: 'transparent',marginBottom: '5px'}}>spatiu</span>
                                     <div className="box-container-submit-btn">
                                         <span>CAUTĂ</span>
