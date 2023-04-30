@@ -1,5 +1,5 @@
 import './Search.css';
-
+import { useState,useEffect } from 'react';
 const Cautare = () => {
 
         const[dateIntrare, seteazaDateIntrare] = useState({
@@ -43,12 +43,12 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select onChange={schimbaDateIntrare} name="location">
+                                    <select onChange={schimbaDateIntrare} name="locatie">
                                         <option value="">-</option>
-                                        <option value="europe">Moldova</option>
-                                        <option value="north-america">Maramureș</option>
-                                        <option value="south-america">Oltenia</option>
-                                        <option value="asia">Ardeal</option>
+                                        <option value="Moldova">Moldova</option>
+                                        <option value="Maramureș">Maramureș</option>
+                                        <option value="Oltenia">Oltenia</option>
+                                        <option value="Ardeal">Ardeal</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select  onChange={schimbaDateIntrare} name="type">
+                                    <select  onChange={schimbaDateIntrare} name="tip">
                                         <option value="">-</option>
                                         <option value="apartament">Apartament</option>
                                         <option value="building area">Building area</option>
@@ -109,7 +109,7 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="number" onChange={schimbaDateIntrare} name="price_from"/>
+                                    <input type="number" onChange={schimbaDateIntrare} name="pret_de_la"/>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div className="number-input-box">
-                                        <input type="number" onChange={schimbaDateIntrare} name="price_to"/>
+                                        <input type="number" onChange={schimbaDateIntrare} name="pret_pana_la"/>
                                     </div>
                             </div>
                         
@@ -132,7 +132,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select onChange={schimbaDateIntrare} name="rooms">
+                                        <select onChange={schimbaDateIntrare} name="camere">
                                             <option value="">-</option>
                                             <option value="+1">+1</option>
                                             <option value="+2">+2</option>
@@ -148,7 +148,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select onChange={schimbaDateIntrare} name="baths">
+                                        <select onChange={schimbaDateIntrare} name="bai">
                                             <option value="">-</option>
                                             <option value="+1">+1</option>
                                             <option value="+2">+2</option>
@@ -163,7 +163,7 @@ const Cautare = () => {
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select onChange={schimbaDateIntrare} name="beds">
+                                        <select onChange={schimbaDateIntrare} name="paturi">
                                         <option value="">-</option>
                                             <option value="+1">+1</option>
                                             <option value="+2">+2</option>
