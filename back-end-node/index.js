@@ -1,15 +1,13 @@
 const express = require('express')
+
 const app = express();
-const PORT = 4000;
+const PORT = 5000;
 const mongoose = require('mongoose')
 const dotenv = require('dotenv');
+
 //Import routers
-// //const authRoute = require('./routes/auth'); 
-// const postRoute = require('./routes/posts');
-// const postNew = require('./routes/postNew');
-// const fetchProperty = require('./routes/fetchProperty');
-// const otherSection = require('./routes/otherSection');
-// const filterProps = require('./routes/filterProps');
+const autentificare = require('./rute/Autentificare'); 
+
 
 const cors = require('cors')
 app.use(cors())
@@ -43,20 +41,11 @@ connect_to_mongose();
 app.use(express.json());
 
 
-
+app.use('/api/modelUtilizator',autentificare);
 //Route MiddleWares
-//anythin in authRoute will have '/api/user prefix => /api/user/register
-// app.use('/api/user',authRoute);
-// app.use('/api/posts',postRoute);
-// app.use('/api/newpost',postNew);
-// app.use('/api/fetchProperty', fetchProperty);
-// app.use('/api/otherSection',otherSection);
-// app.use('/api/filterProps',filterProps);
-
-//implementeaza aici
-app.get('/ceva',(req,res)=>
+app.get('/',(req,res)=>
 {
-    res.send('ceva')
+    res.send('alex are 2 ani')
 })
 
 app.listen(PORT,()=>{

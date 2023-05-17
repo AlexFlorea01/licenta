@@ -53,7 +53,7 @@ const Conectare = () => {
                                 </label>
                                 <label>
                                     <span>Parola</span>
-                                    <input type="password" name="password" onChange={schimbaDateIntrare}/>
+                                    <input type="password" name="parola" onChange={schimbaDateIntrare}/>
                                 </label>
 
                                 <label className="submit-btn-label">

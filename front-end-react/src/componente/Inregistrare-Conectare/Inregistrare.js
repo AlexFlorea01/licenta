@@ -2,6 +2,7 @@ import './Inregistrare.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Meniu from '../Pagina principala/Meniu/Meniu';
+import axios from 'axios';
 
 const Inregistrare = () => {
     
@@ -40,7 +41,17 @@ const Inregistrare = () => {
             }
             else
             {
-                
+                //trimit la axios o singura parola
+                let dateIntrareSplit = dateIntrare;
+                delete dateIntrareSplit.repetaParola
+
+                axios.post('api/modelUtilizator/inregistrare',dateIntrareSplit)
+                .then(res=>{
+                    console.log(res)
+                    navigate('/administrare');
+                    
+                })
+                .catch(err=>console.log(err))
             }
         }
     }
@@ -61,7 +72,7 @@ const Inregistrare = () => {
                             <form className="sign-up-form">
                                 <label>
                                     <span>Nume</span>
-                                    <input type="text" name="name" onChange={schimbaDateIntrare}/>
+                                    <input type="text" name="nume" onChange={schimbaDateIntrare}/>
                                 </label>
                                 <label>
                                     <span>Email</span>
@@ -69,11 +80,11 @@ const Inregistrare = () => {
                                 </label>
                                 <label>
                                     <span>Parola</span>
-                                    <input type="password" name="password" onChange={schimbaDateIntrare}/>
+                                    <input type="password" name="parola" onChange={schimbaDateIntrare}/>
                                 </label>
                                 <label>
                                     <span>Repeta parola</span>
-                                    <input type="password" name="doublePassword" onChange={schimbaDateIntrare}/>
+                                    <input type="password" name="repetaParola" onChange={schimbaDateIntrare}/>
                                 </label>
                                 <label className="submit-btn-label">
                                     <button onClick={trimiteModifIntrari}>Inregistrare</button>

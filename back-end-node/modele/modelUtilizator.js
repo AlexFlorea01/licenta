@@ -7,7 +7,28 @@ const mongoose = require('mongoose');
 
 //Se definește schema pentru utilizatori prin apelarea funcției mongoose.Schema(). 
 const userSchema = new mongoose.Schema({
-
+    nume:{
+        type:String,
+        required: true,
+        min: 6,
+        max:255
+    },
+    email:{
+        type:String,
+        required: true,
+        min:6,
+        max:255
+    },
+    parola:{
+        type:String,
+        required: true,
+        max: 1024,
+        min: 6
+    },
+    data:{
+        type: Date,
+        default: Date.now
+    }
 
 });
 
