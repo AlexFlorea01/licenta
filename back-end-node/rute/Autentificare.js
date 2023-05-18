@@ -1,9 +1,10 @@
-const router = require('express');
+const router = require('express').Router();
 const utilizatorModel = require('../modele/modelUtilizator');
 
-router.post('/inregistrare', async(req,res)=>{
 
-    console.log("inregistrare:", req.body);
+router.post('/register', async(req,res)=>{
+
+    console.log("register", req.body);
 
     //making a new user
     const user = new utilizatorModel({
@@ -22,8 +23,6 @@ router.post('/inregistrare', async(req,res)=>{
     }
 
 })
-
-// Sigur! Iată un exemplu simplu de utilizare a metodelor HTTP într-un REST API pentru gestionarea unei liste de utilizatori:
 
 // 1. GET - Obținerea listei de utilizatori:
 //    - Endpoint: `/users`

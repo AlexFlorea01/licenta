@@ -45,7 +45,7 @@ const Inregistrare = () => {
                 let dateIntrareSplit = dateIntrare;
                 delete dateIntrareSplit.repetaParola
 
-                axios.post('api/modelUtilizator/inregistrare',dateIntrareSplit)
+                axios.post('api/user/register',dateIntrareSplit)
                 .then(res=>{
                     console.log(res)
                     navigate('/administrare');

@@ -1,5 +1,4 @@
 const express = require('express')
-
 const app = express();
 const PORT = 5000;
 const mongoose = require('mongoose')
@@ -41,9 +40,9 @@ connect_to_mongose();
 app.use(express.json());
 
 
-app.use('/api/modelUtilizator',autentificare);
+app.use('/api/user',autentificare);
 //Route MiddleWares
-app.get('/',(req,res)=>
+app.get('/api/user',(req,res)=>
 {
     res.send('alex are 2 ani')
 })
