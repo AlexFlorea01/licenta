@@ -4,21 +4,12 @@ const PORT = 5000;
 const mongoose = require('mongoose')
 const dotenv = require('dotenv');
 
-//Import routers
-const autentificare = require('./rute/Autentificare'); 
-
+const utilizatorModel = require('./modele/modelUtilizator')
 
 const cors = require('cors')
 app.use(cors())
 
 dotenv.config();
-
-//Connect to db
-// mongoose.connect(process.env.DB_CONNECT,
-//     {useNewUrlParser: true},
-//     ()=>{
-//     console.log("Connected to db!")
-// })
 
 let connect_to_mongose = async ()=>{
     try {
@@ -39,14 +30,28 @@ connect_to_mongose();
 //MiddleWare
 app.use(express.json());
 
+app.post('/api/user/register',async(req,res)=>{
 
-app.use('/api/user',autentificare);
-//Route MiddleWares
-app.get('/api/user',(req,res)=>
-{
-    res.send('alex are 2 ani')
+    console.log("test:", req.body);
+    //making a new user
+
+    const user = new utilizatorModel({
+        nume: req.body.nume,
+        email: req.body.email,
+        parola: req.body.parola
+    })
+    console.log("After:",user)
+    
+    //salvează utilizatorul în baza de date și returnează un răspuns corespunzător în funcție de rezultatul salvării
+    try{
+        await user.save();
+        return res.json({user: user._id});
+    }catch(err)
+    {
+        return res.status(400).send("Nu am putut crea utilizatorul")
+    }
+
 })
-
 app.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT}`)
 })

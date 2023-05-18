@@ -31,13 +31,13 @@ const Inregistrare = () => {
         event.preventDefault(); // previne reincarcarea browserului la submit buton
         if(dateIntrare.nume.length == 0 || dateIntrare.email.length == 0 || dateIntrare.parola.length == 0)
         {
-            console.log("Nu ai completat unul dintre campuri!")
+            window.alert("Nu ai completat unul dintre campuri!")
         }
         else
         {
             if(dateIntrare.parola != dateIntrare.repetaParola)
             {
-                console.log("Parole diferite.")
+                window.alert("Parole diferite.")
             }
             else
             {
@@ -45,7 +45,7 @@ const Inregistrare = () => {
                 let dateIntrareSplit = dateIntrare;
                 delete dateIntrareSplit.repetaParola
 
-                axios.post('api/user/register',dateIntrareSplit)
+                axios.post('http://localhost:5000/api/user/register',dateIntrareSplit)
                 .then(res=>{
                     console.log(res)
                     navigate('/administrare');
