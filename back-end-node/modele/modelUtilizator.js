@@ -11,19 +11,19 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true,
         min: 6,
-        max:255
+        max:10
     },
     email:{
         type:String,
         required: true,
         min:6,
-        max:255
+        max:10
     },
     parola:{
         type:String,
         required: true,
-        max: 1024,
-        min: 6
+        min: 6,
+        max: 10
     },
     data:{
         type: Date,
@@ -41,7 +41,6 @@ module.exports = mongoose.model('User', userSchema);
 //De exemplu, într-un alt fișier JavaScript, putem utiliza require() pentru a accesa modelul definit în fișierul anterior:
 
 // const User = require('./models/user');
-
 
 
 //Puteți utiliza metodele app.get(), app.post(), app.put() sau app.delete() pentru a defini rutele corespunzătoare pentru metodele HTTP GET, POST, PUT sau DELETE.

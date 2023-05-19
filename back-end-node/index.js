@@ -30,7 +30,16 @@ connect_to_mongose();
 //MiddleWare
 app.use(express.json());
 
+//////////////////////////////////////////////////////////
+//Acopera partea de inregistrare
 app.post('/api/user/register',async(req,res)=>{
+
+    //check if the user is already in the db
+    const emailExists = await utilizatorModel.findOne({email:req.body.email})
+    if(emailExists)
+    {
+        return res.status(400).send("exista deja un utilizator cu acest email in baza de date")
+    }
 
     console.log("test:", req.body);
     //making a new user
@@ -50,8 +59,26 @@ app.post('/api/user/register',async(req,res)=>{
     {
         return res.status(400).send("Nu am putut crea utilizatorul")
     }
-
 })
+///////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////
+//Acopera partea de logare
+app.post('/api/user/login',async (req,res)=>{
+
+    //check if the email exists
+    //.findOne intoarce boolean in functie de rezultatul cautarii
+    const user = await utilizatorModel.findOne({email:req.body.email})
+    if(!user) return res.status(400).send("Utiliatorul cu acest email nu este inregistrat in baza de date!")
+
+    // //Password is correct
+    if(req.body.parola != user.parola) return res.status(400).send("Parola Gresita!")
+
+    return res.json({user: user._id});
+})
+///////////////////////////////////////////////////////////
+
+
 app.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT}`)
 })

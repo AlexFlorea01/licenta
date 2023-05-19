@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Meniu from '../Pagina principala/Meniu/Meniu';
 import { useState,useEffect } from 'react';
+import axios from 'axios';
+
 const Conectare = () => {
 
     let navigate = useNavigate();
@@ -30,7 +32,12 @@ const Conectare = () => {
         }
         else
         {
-            
+            axios.post('http://localhost:5000/api/user/login',dateIntrare)
+            .then((res)=>{
+                console.log(res)
+                navigate('/administrare');
+            })
+            .catch(err=>console.log(err))
         }
     }
 
