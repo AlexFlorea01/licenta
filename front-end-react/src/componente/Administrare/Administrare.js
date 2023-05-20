@@ -1,11 +1,13 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import './Administrare.css';
 import LogoIcon from '../../imagini/logo.png';
 import { useNavigate } from 'react-router-dom';
 
 
 const Administrare = () => {
+
     let navigate = useNavigate();
+
     useEffect(()=>{
         let token = window.localStorage.getItem('token')
         // axios.post(/api/verifica-token,{}) - de implementat asa cu functie separata care verifica token-ul iar eu verific doar raspunsul pozitiv/negativ aici
@@ -20,8 +22,19 @@ const Administrare = () => {
         window.localStorage.removeItem('token')
         navigate('/conectare');
     }
-     
 
+    const [ecranSelectat, seteazaEranul] = useState('vinde');
+     
+    const schimbaEcranul = (ecran)=>{
+            if(ecran == 'vinde')
+            {
+                seteazaEranul('vinde')
+            }
+            else if(ecran == 'cumpara')
+            {
+                seteazaEranul('cumpara')
+            }
+        }
     return ( 
         <div className="home-container">
             <div className="home-menu-bar">
@@ -31,31 +44,33 @@ const Administrare = () => {
                     </div>
                     <div className="home-nav-buy-container">
                         <span 
-                            // className={selectedScreen == 'buy' ? 'selected-span':''}
+                            className={ecranSelectat == 'cumpara' ? 'selected-span':''}
+                            onClick={()=>{schimbaEcranul('cumpara')}}v
                         >
-                            Buy
+                            Cumpara
                         </span>
                     </div>
                     <div className="home-nav-sell-container">
                         <span 
-                            // className={selectedScreen == 'sell' ? 'selected-span':''}
+                            className={ecranSelectat == 'vinde' ? 'selected-span':''}
+                            onClick={()=>{schimbaEcranul('vinde')}}
                         >
-                            Sell
+                            Vinde
                         </span>
                     </div>
                 </div>
                 <div className="home-menu-user-icon">
                     <div className="log-out-btn-home" >
-                        <span onClick={logOutAction}>Log out</span>
+                        <span onClick={logOutAction}>Deconecteaza-te</span>
                     </div>
                 </div>
             </div>
             <div className="home-content">
-                {/* {selectedScreen == 'buy'?
-                    <Buy />
+                {ecranSelectat == 'cumpara'?
+                    <Cumpara />
                     :
-                    <Sell />
-                } */}
+                    <Vinde />
+                }
             </div>
         </div>
      );

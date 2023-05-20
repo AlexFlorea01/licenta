@@ -48,7 +48,7 @@ const Inregistrare = () => {
                 axios.post('http://localhost:5000/api/user/register',dateIntrareSplit)
                 .then(res=>{
                     console.log(res)
-                    navigate('/administrare');
+                    navigate('/conectare');
                     
                 })
                 .catch(err=>console.log(err))
