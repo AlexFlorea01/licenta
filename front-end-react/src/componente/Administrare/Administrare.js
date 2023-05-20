@@ -1,7 +1,11 @@
-import React,{useEffect, useState} from 'react';
 import './Administrare.css';
 import LogoIcon from '../../imagini/logo.png';
+
 import { useNavigate } from 'react-router-dom';
+import React,{useEffect, useState} from 'react';
+
+import Cumpara from './Cumpara/Cumpara';
+import Vinde from './Vinde/Vinde';
 
 
 const Administrare = () => {
@@ -67,9 +71,9 @@ const Administrare = () => {
             </div>
             <div className="home-content">
                 {ecranSelectat == 'cumpara'?
-                    <Cumpara />
+                    <Cumpara/>
                     :
-                    <Vinde />
+                    <Vinde/>
                 }
             </div>
         </div>

@@ -11,7 +11,7 @@ const Cautare = () => {
         pret_pana_la:'',
         camere: '',
         bai: '',
-        paturi: '',
+        etaje: '',
     })
 
     const schimbaDateIntrare = (ceTastezNouEvent)=>{
@@ -45,10 +45,12 @@ const Cautare = () => {
                                 <div class="select">
                                     <select onChange={schimbaDateIntrare} name="locatie">
                                         <option value="">-</option>
-                                        <option value="Moldova">Moldova</option>
-                                        <option value="Maramureș">Maramureș</option>
-                                        <option value="Oltenia">Oltenia</option>
-                                        <option value="Ardeal">Ardeal</option>
+                                        <option value="Iasi">Iasi</option>
+                                        <option value="Bucuresti">Bucuresti</option>
+                                        <option value="Cluj">Cluj</option>
+                                        <option value="Brasov">Brasov</option>
+                                        <option value="Sibiu">Sibiu</option>
+                                        <option value="Altele">Alta locatie</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,12 +61,12 @@ const Cautare = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <select  onChange={schimbaDateIntrare} name="tip">
+                                    <select onChange={schimbaDateIntrare} name="tip">
                                         <option value="">-</option>
-                                        <option value="apartament">Apartament</option>
-                                        <option value="building area">Building area</option>
-                                        <option value="house">House</option>
-                                        <option value="villa">Villa</option>
+                                        <option value="Apartament">Apartament</option>
+                                        <option value="Casa">Casa</option>
+                                        <option value="Spatiu">Spatiu</option>
+                                        <option value="Depozit">Depozit</option>
                                     </select>
                                 </div>
                             </div>
@@ -77,10 +79,10 @@ const Cautare = () => {
                                 <div class="select">
                                     <select onChange={schimbaDateIntrare} name="status">
                                         <option value="">-</option>
-                                        <option value="available">Available</option>
-                                        <option value="rent agreed ">Rent agreed </option>
-                                        <option value="reserved">Reserved</option>
-                                        <option value="sell agreed">Sell agreed</option>
+                                        <option value="Disponibil">Disponibil</option>
+                                        <option value="Rezervata">Rezervat</option>
+                                        <option value="In constructie">In constructie </option>
+                                        <option value="In renovare">In renovare</option>
                                     </select>
                                 </div>
                             </div>
@@ -93,12 +95,12 @@ const Cautare = () => {
                                 <div class="select">
                                     <select onChange={schimbaDateIntrare} name="material">
                                         <option value="">-</option>
-                                        <option value="block">Block</option>
-                                        <option value="brick">Brick</option>
-                                        <option value="mixed">Mixed</option>
-                                        <option value="prefab">Prefab</option>
-                                        <option value="stone">Stone</option>
-                                        <option value="wood">Wood</option>
+                                        <option value="BCA">BCA</option>
+                                        <option value="Prefabricate">Prefabricate</option>
+                                        <option value="Caramida">Caramida</option>
+                                        <option value="Lemn">Lemn</option>
+                                        <option value="Piatra">Piatra</option>
+                                        <option value="Metal">Metal</option>
                                     </select>
                                 </div>
                             </div>
@@ -134,9 +136,9 @@ const Cautare = () => {
                                     <div class="select">
                                         <select onChange={schimbaDateIntrare} name="camere">
                                             <option value="">-</option>
-                                            <option value="+1">+1</option>
-                                            <option value="+2">+2</option>
-                                            <option value="+4">+3</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </select>
                                     </div>
                             </div>
@@ -150,24 +152,24 @@ const Cautare = () => {
                                     <div class="select">
                                         <select onChange={schimbaDateIntrare} name="bai">
                                             <option value="">-</option>
-                                            <option value="+1">+1</option>
-                                            <option value="+2">+2</option>
-                                            <option value="+4">+3</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </select>
                                     </div>
                             </div>
                             <div className="form-box-container">
                                     <div className="box-title-container">
                                         <span>
-                                            Nr. paturi
+                                            Nr. etaje
                                         </span>
                                     </div>
                                     <div class="select">
-                                        <select onChange={schimbaDateIntrare} name="paturi">
-                                        <option value="">-</option>
-                                            <option value="+1">+1</option>
-                                            <option value="+2">+2</option>
-                                            <option value="+4">+3</option>
+                                        <select onChange={schimbaDateIntrare} name="etaje">
+                                            <option value="">-</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </select>
                                     </div>
                             </div>

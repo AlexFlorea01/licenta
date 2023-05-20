@@ -1,25 +1,25 @@
 const mongoose = require('mongoose')
 
 const propertySchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    contactNumber:String,
+    nume: String,
+    descriere: String,
+    numarContact:String,
 
-    type: String,
+    tip: String,
     status: String,
     material: String,
-    price: Number,
+    pret: Number,
 
     
-    rooms:Number,
-    baths: Number,
-    beds:Number,
-    location: String,
+    camere:Number,
+    bai: Number,
+    etaje:Number,
+    locatie: String,
 
     long: Number,
     lat: Number,
 
-    images: Array
+    imagini: Array
 })
 
 module.exports = mongoose.model('Property',propertySchema);
