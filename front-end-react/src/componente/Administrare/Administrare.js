@@ -1,11 +1,26 @@
+import React,{useEffect} from 'react';
 import './Administrare.css';
 import LogoIcon from '../../imagini/logo.png';
 import { useNavigate } from 'react-router-dom';
 
 
 const Administrare = () => {
+    let navigate = useNavigate();
+    useEffect(()=>{
+        let token = window.localStorage.getItem('token')
+        // axios.post(/api/verifica-token,{}) - de implementat asa cu functie separata care verifica token-ul iar eu verific doar raspunsul pozitiv/negativ aici
+        if(token == undefined || token !== 'abc')
+        {
+            navigate('/conectare');
+        }
+        
+    },[])
 
-    let navigate=useNavigate();
+    const logOutAction = () => {
+        window.localStorage.removeItem('token')
+        navigate('/conectare');
+    }
+     
 
     return ( 
         <div className="home-container">
@@ -31,7 +46,7 @@ const Administrare = () => {
                 </div>
                 <div className="home-menu-user-icon">
                     <div className="log-out-btn-home" >
-                        <span>Log out</span>
+                        <span onClick={logOutAction}>Log out</span>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,8 @@ const Conectare = () => {
         {
             axios.post('http://localhost:5000/api/user/login',dateIntrare)
             .then((res)=>{
-                console.log(res)
+                console.log("login:",res)
+                window.localStorage.setItem('token',res.data.token)
                 navigate('/administrare');
             })
             .catch(err=>console.log(err))

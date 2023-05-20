@@ -73,8 +73,9 @@ app.post('/api/user/login',async (req,res)=>{
 
     // //Password is correct
     if(req.body.parola != user.parola) return res.status(400).send("Parola Gresita!")
-
-    return res.json({user: user._id});
+    //to do
+    //generate token 
+    return res.json({token: 'abc'});
 })
 ///////////////////////////////////////////////////////////
 
