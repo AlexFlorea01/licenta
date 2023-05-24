@@ -24,6 +24,7 @@ const Conectare = () => {
         console.log(dateIntrare)
     },[dateIntrare])
 
+        //buton submit
     const trimiteModifIntrari = (event) => {
         event.preventDefault(); // previne reincarcarea browserului la submit buton
         if(dateIntrare.email.length == 0 || dateIntrare.parola.length == 0)
