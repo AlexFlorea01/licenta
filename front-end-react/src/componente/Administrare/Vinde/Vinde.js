@@ -1,3 +1,5 @@
+import './Vinde.css';
+
 const Vinde = () => {
 
     return ( 

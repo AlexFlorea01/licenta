@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv');
 
 const utilizatorModel = require('./modele/modelUtilizator')
-
+const proprietatiModel = require('./modele/modelProprietate');
 const cors = require('cors')
 app.use(cors())
 
@@ -78,7 +78,66 @@ app.post('/api/user/login',async (req,res)=>{
     return res.json({token: 'abc'});
 })
 ///////////////////////////////////////////////////////////
+///////////////////////////////////////////////
+//filtreaza proprietati
 
+app.post('/api/user/proprietatiFiltrate',async (req,res)=>{
+    console.log("filtre:", req.body);
+
+    let not_empty_filters = {};
+    for(let c in req.body.body)
+    {
+        if(req.body.body[c] != '' && req.body.body[c] !== 'pret_de_la' && req.body.body[c] !== 'pret_pana_la' )
+        {
+            not_empty_filters[c] = req.body.body[c];
+        }
+    }
+    console.log("not_empty_filters:",not_empty_filters)
+
+    let filtrate_fara_pret = await proprietatiModel.find({
+        ...not_empty_filters
+    },(err,data)=>{
+        if(err)
+        {
+            res.status(500).json({err: 'search err'})
+        }
+        else
+        {
+            return data;
+        }
+    })
+    console.log("filtrate_fara_pret:",filtrate_fara_pret)
+    res.status(200).send(filtrate_fara_pret)
+    // let arr_final = []
+    // let pret_min = Number(req.body.body.pret_de_la);
+    // let pret_max = Number(req.body.body.pret_pana_la);
+
+    // filtrate_fara_pret.forEach((el)=>{
+        
+    //     if(el.pret > pret_max && el.pret < pret_max )
+    //     {
+    //         //exact price
+    //         arr_final.push(el)
+    //     }
+    //     else if(pret_max == '' && pret_min == '')
+    //     {
+    //         //not completed fields
+    //         arr_final.push(el);
+    //     }
+    //     else if(pret_max == '' && el.pret > pret_min)
+    //     {
+    //         //only pret_min completed
+    //         arr_final.push(el);
+    //     }
+    //     else if(pret_min == ''  && el.pret < pret_max)
+    //     {
+    //         arr_final.push(el);
+    //     }
+    // })
+    // console.log("final", arr_final);
+    // res.json({rasp: arr_final})
+    }
+)
 
 
 

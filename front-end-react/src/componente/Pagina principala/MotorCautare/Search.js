@@ -84,7 +84,7 @@ const Cautare = ({changeHomeState}) => {
                                 <div class="select">
                                     <select onChange={schimbaDateIntrare} name="tip">
                                         <option value="">-</option>
-                                        <option value="Apartament">Apartament</option>
+                                        <option value="apartament">Apartament</option>
                                         <option value="Casa">Casa</option>
                                         <option value="Spatiu">Spatiu</option>
                                         <option value="Depozit">Depozit</option>
