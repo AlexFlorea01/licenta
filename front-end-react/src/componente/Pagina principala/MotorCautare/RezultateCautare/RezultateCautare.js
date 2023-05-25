@@ -3,7 +3,7 @@ import './RezultateCautare.css';
 
 import { useEffect } from 'react';
 
-const RezultateCautare = (filters) => {
+const RezultateCautare = ({filters}) => {
 
     useEffect(()=>{
         console.log("update in show results",filters);

@@ -65,7 +65,7 @@ const ObiectCautat = (obiect) => {
                             <span>$ {obiect.pret}</span>
                         </div>
                         <div className="item-padding" >
-                            <button >View</button>
+                            <button >VEZI</button>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import './Search.css';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+
 const Cautare = ({changeHomeState}) => {
 
         const[dateIntrare, seteazaDateIntrare] = useState({
@@ -27,6 +28,7 @@ const Cautare = ({changeHomeState}) => {
         console.log(dateIntrare)
     },[dateIntrare])
 
+
     const trimiteModifIntrari = (event) => {
         event.preventDefault(); // previne reincarcarea browserului la submit buton
         const config = {
@@ -44,7 +46,7 @@ const Cautare = ({changeHomeState}) => {
             axios.post('http://localhost:5000/api/user/proprietatiFiltrate',config)
             .then((resp)=>{
                 console.log("update cautare pag principala",resp.data);
-                changeHomeState(resp.data.rasp);
+                changeHomeState(resp.data);
             })
         }
         catch(err){
