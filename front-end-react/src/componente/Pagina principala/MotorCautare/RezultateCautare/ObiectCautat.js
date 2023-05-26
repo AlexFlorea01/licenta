@@ -4,8 +4,7 @@ import pozaBaie from '../../../../imagini/bath.png';
 import './RezultateCautare.css';
 import { useEffect } from 'react';
 
-const ObiectCautat = (obiect) => {
-
+const ObiectCautat = ({obiect}) => {
     const cutText = (string)=>{
         if(string.length < 193)
         {
@@ -17,11 +16,6 @@ const ObiectCautat = (obiect) => {
             return `${temp} ...`;
         }
     }
-
-
-    useEffect(()=>{
-        console.log("ObiectCautat",obiect);
-    },[])
 
     return (
         <div className="search-results-content">
