@@ -65,7 +65,7 @@ const Administrare = () => {
                 </div>
                 <div className="home-menu-user-icon">
                     <div className="log-out-btn-home" >
-                        <span onClick={logOutAction}>Deconecteaza-te</span>
+                        <span onClick={logOutAction}>Deconectare</span>
                     </div>
                 </div>
             </div>

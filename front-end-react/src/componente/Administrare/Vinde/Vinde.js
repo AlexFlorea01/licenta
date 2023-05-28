@@ -1,8 +1,12 @@
 import './Vinde.css';
+import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Vinde = () => {
 
-        const history = useHistory();
+        const navigate = useNavigate();
 
     const[dateIntrare, seteazaDateIntrare] = useState({
         nume: '',
@@ -20,20 +24,25 @@ const Vinde = () => {
         lat:0,
         long:0
     })
-    // const [showError, setShowError] = useState({
-    //     text: 'Sell your property',
-    //     className: ''
-    // });
+   
+    const [showError, setShowError] = useState({
+        text: 'Sell your property',
+        className: ''
+    });
 
-    // useEffect(()=>{
-    //     console.log("update show error", showError)
-    // },[showError])
+    useEffect(()=>{
+        console.log("update show error", showError)
+    },[showError])
+
+    useEffect(()=>{
+        console.log("update dateIntrare", dateIntrare)
+    },[])
 
     // useEffect(()=>{
     //     store.subscribe(()=>{
     //         console.log("store updated!")
     //         console.log(store.getState())
-    //         setData((prev)=>{
+    //         setdateIntrare((prev)=>{
     //             let state = store.getState().mapCoord;
     //             return{
     //                 ...prev,
@@ -44,110 +53,120 @@ const Vinde = () => {
     //     })
     // },[])
     
-    // const handleInputChange = (e)=>{
-    //     //<span className=''>Sell your property</span>  
-    //     setShowError({
-    //         text: 'Sell your property',
-    //         className: ''
-    //     });
 
-    //     if(e.target.name == 'images')
-    //     {
-    //         setData((prev)=>{
-    //             prev[e.target.name] = getImagesLinks(e.target.value);
-    //             return {...prev}
-    //         })
-    //     }
-    //     else
-    //     {
-    //         setData((prev)=>{
-    //             prev[e.target.name] = e.target.value;
-    //             return {...prev}
-    //         })
-    //     }
 
-    // }
+    const schimbaDateIntrare = (e)=>{
+        //pune textul initial sus de fiecare data cand se schimba datele de intrare
+        <span className=''>Sell your property</span>  
+        //
 
-    // const handleSubmit = async (e)=>{
-    //     e.preventDefault();
-    //     if(data.name != '' && data.contact_nr != '' && data.type != '' && data.description != ''  && data.status  != '' && data.material != '' && data.airport_time != ''  && data.hospital_time != ''  && data.city_center != '')
-    //     {
-    //         console.log("submit ok")
-    //         console.log(data);
-    //         const config = {
-    //             headers:{
-    //                 'Content-Type' : 'application/json',
-    //                 'Accept' : 'application/json',
-    //                 'auth-token': localStorage.getItem('token') 
-    //             },
-    //             body:{
-    //                 ...data
-    //             }
-    //         }
+        setShowError({
+            text: 'Sell your property',
+            className: ''
+        });
 
-    //         try{
+        if(e.target.name == 'images')
+        {
+            seteazaDateIntrare((prev)=>{
+                prev[e.target.name] = getImagesLinks(e.target.value);
+                return {...prev}
+            })
+        }
+        else
+        {
+            seteazaDateIntrare((prev)=>{
+                prev[e.target.name] = e.target.value;
+                return {...prev}
+            })
+        }
 
-    //             const response = await axios.post('api/newpost',config)
-    //             .then((ceva)=>{
-    //                 console.log("redirect la pagina cu anuntul creat!")
-    //                 let new_link = ceva.data.newProperty._id;
-    //                 console.log(ceva.data.newProperty._id);
-    //                 history.push(`/property/${new_link}`)
-    //             })
-    //             //eroare prina de catch-ul cu un level mai afara
-    //         }
-    //         catch(err){
-    //            console.log(err.response.status)
-    //            if(err.response.status == 401 || err.response.status == 403)
-    //            {
-    //                //<span className='error-css'>You are unauthorized to do this action!</span>  
-    //                console.log("SETEZ STATE 403 401")
-    //                setShowError({
-    //                    text: 'You are unauthorized to do this action!',
-    //                    className: 'error-css'
-    //                })
-    //                console.log("You are unauthorized to do this action!")
-    //            }
-    //            else if(err.response.status == 400)
-    //            {
-    //                //<span className='error-css'>You are unauthorized to do this action!</span> 
-    //                setShowError({
-    //                 text: 'There was a problem saving into database!',
-    //                 className: 'error-css'
-    //             })
+    }
+
+        const getImagesLinks = (string)=>
+    {
+        let array = string.split(',');
+        let final_string = [];
+        array.forEach((el)=>{
+            if(el.length > 0)
+            {
+                console.log(el.length)
+                console.log(el)
+                final_string.push(el.trim())
+            }
+
+        })
+        return final_string;
+    }
+
+    const trimiteModifIntrari = async (e)=>{
+        e.preventDefault();
+        if(dateIntrare.nume != '' && dateIntrare.numarContact != '' && dateIntrare.tip != '' && dateIntrare.descriere != ''  && dateIntrare.status  != '' && dateIntrare.material != '' && dateIntrare.airport_time != ''  && dateIntrare.hospital_time != ''  && dateIntrare.city_center != '')
+        {
+            console.log("submit ok")
+            console.log(dateIntrare);
+            const config = {
+                headers:{
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    'auth-token': localStorage.getItem('token') 
+                },
+                body:{
+                    ...dateIntrare
+                }
+            }
+
+            try{
+
+                await axios.post('api/newpost',config)
+                .then((ceva)=>{
+                    console.log("redirect la pagina cu anuntul creat!")
+                    // let new_link = ceva.dateIntrare.newProperty._id;
+                    // console.log(ceva.dateIntrare.newProperty._id);
+                    // navigate(`/property/${new_link}`)
+                })
+                //eroare prina de catch-ul cu un level mai afara
+            }
+            catch(err){
+               console.log(err.response.status)
+               if(err.response.status == 401 || err.response.status == 403)
+               {
+                //arat eroarea specifica
+                   <span className='error-css'>You are unauthorized to do this action!</span>  
+
+                   console.log("SETEZ STATE 403 401")
+                   setShowError({
+                       text: 'You are unauthorized to do this action!',
+                       className: 'error-css'
+                   })
+                   console.log("You are unauthorized to do this action!")
+               }
+               else if(err.response.status == 400)
+               {
+                   <span className='error-css'>You are unauthorized to do this action!</span> 
+
+                   setShowError({
+                    text: 'There was a problem saving into dateIntrarebase!',
+                    className: 'error-css'
+                })
                    
-    //            }
-    //         }
+               }
+            }
 
-    //     }
-    //     else
-    //     {
-    //         console.log("not ok submit!")
-    //         console.log(data);
+        }
+        else
+        {
+            console.log("not ok submit!")
+            console.log(dateIntrare);
 
-    //         //<span className='error-css'>Complete all fields!</span> 
-    //         setShowError({
-    //             text: 'Complete all fields!',
-    //             className: 'error-css'
-    //         })
-    //     }
+            <span className='error-css'>Complete all fields!</span> 
+            setShowError({
+                text: 'Complete all fields!',
+                className: 'error-css'
+            })
+        }
         
-    // }
-    // const getImagesLinks = (string)=>
-    // {
-    //     let array = string.split(',');
-    //     let final_string = [];
-    //     array.forEach((el)=>{
-    //         if(el.length > 0)
-    //         {
-    //             console.log(el.length)
-    //             console.log(el)
-    //             final_string.push(el.trim())
-    //         }
+    }
 
-    //     })
-    //     return final_string;
-    // }
     return(
         <div className="selected-screen-container">
             <div className="selected-screen-map-container">
@@ -156,7 +175,7 @@ const Vinde = () => {
             <div className="selected-screen-right-content">
                 <div className="selected-screen-right-content-padding">
                     <div className="sell-form-title">
-                        {/* <span className={showError.className}>{showError.text}</span> */}
+                        <span className={showError.className}>{showError.text}</span>
                     </div>
                     <form className="sell-form">
                         <div className="triple-inputs">
@@ -169,7 +188,7 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="text" name="name" onChange={schimbaDateIntrare}/>
+                                    <input type="text" name="nume" onChange={schimbaDateIntrare}/>
                                 </div>
                             </div>
 
@@ -180,7 +199,7 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="number" name="contact_nr" onChange={schimbaDateIntrare}/>
+                                    <input type="number" name="numarContact" onChange={schimbaDateIntrare}/>
                                 </div>
                             </div>
 
@@ -211,14 +230,13 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    {/* name="w3review" */}
-                                    <textarea id="w3review"  rows="4" cols="50" name="description" onChange={schimbaDateIntrare}/>
+                                    <textarea id="w3review1"  rows="4" cols="50" name="descriere" onChange={schimbaDateIntrare}/>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="triple-inputs">
 
+                    <div className="triple-inputs">
 
                         <div className="form-box-container">
                                 <div className="box-title-container">
@@ -227,7 +245,6 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div class="select">
-                                    <div class="select">
                                     <select onChange={schimbaDateIntrare} name="status">
                                         <option value="">-</option>
                                         <option value="Disponibil">Disponibil</option>
@@ -264,11 +281,10 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="number" name="price" onChange={schimbaDateIntrare} />
+                                    <input type="number" name="pret" onChange={schimbaDateIntrare} />
                                 </div>
                             </div>
-
-                        </div>
+                    </div>
 
                         <div className="triple-inputs">
 
@@ -279,7 +295,7 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="number" name="rooms" onChange={schimbaDateIntrare}/>
+                                    <input type="number" name="camere" onChange={schimbaDateIntrare}/>
                                 </div>
                             </div>
 
@@ -290,7 +306,7 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <input type="number" name="baths" onChange={schimbaDateIntrare}/>
+                                    <input type="number" name="bai" onChange={schimbaDateIntrare}/>
                                 </div>
                             </div>
 
@@ -329,7 +345,7 @@ const Vinde = () => {
                         </div>
 
                         <div className='box-title-container' style={{padding: '0px 10px',}}>
-                            {/* <span>Selected map marker: {data.long} long - {data.lat} lat</span> */}
+                            <span>Punct marcat pe harta: {dateIntrare.long} long - {dateIntrare.lat} lat</span>
                         </div>
 
                         <div className="single-text-area-input">
@@ -340,7 +356,7 @@ const Vinde = () => {
                                     </span>
                                 </div>
                                 <div className="number-input-box">
-                                    <textarea id="w3review" name="w3review" rows="4" cols="50" name="imagini" onChange={schimbaDateIntrare}/>
+                                    <textarea id="w3review" rows="4" cols="50" name="imagini" onChange={schimbaDateIntrare}/>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +372,7 @@ const Vinde = () => {
             </div>
 
         </div>
-    )
+    );
 }
 
 export default Vinde;
