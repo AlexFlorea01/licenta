@@ -141,9 +141,61 @@ app.post('/api/user/proprietatiFiltrate',async (req,res)=>{
 
 //////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
-//acopera partea de buy
+//acopera partea de Sell
+app.post('/api/user/newsell',async (req,res)=>{
+    token=1;
+    //const token = req.body.headers['auth-token'];
+    if(!token)
+    {
+        //nu este furnizat un token
+        res.status(403).json({error: "Acces denied!"})
+    }
+    else
+    {
+        //are token => verificam daca este corect
+        try{
+            //const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+            
+            console.log("body",req.body.body);
+            //verified = {_id: .. , iat: ..}
+            let temp = req.body.body;
 
+            let newProperty = new proprietatiModel({
+                nume: temp.nume,
+                descriere: temp.descriere,
+                numarContact: temp.numarContact,
+            
+                tip: temp.tip,
+                status: temp.status,
+                material: temp.material,
+                pret: temp.pret,
 
+                
+                camere: temp.camere,
+                bai: temp.bai,
+                etaje: temp.etaje,
+                locatie: temp.locatie,
+            
+                long: temp.long,
+                lat: temp.lat,
+            
+                imagini: temp.imagini
+            })
+            try{
+                const savedProperty =  await newProperty.save();
+                res.json({newProperty: savedProperty});
+            }catch(err)
+            {
+                res.status(400).json({error: 'Unable to save into db!'})
+            }
+            
+            
+        }
+        catch(err){
+            res.status(401).json({error: "Invalid token!"})
+        }
+    }
+})
 
 
 app.listen(PORT,()=>{

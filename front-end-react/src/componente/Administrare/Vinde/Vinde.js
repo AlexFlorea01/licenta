@@ -26,7 +26,7 @@ const Vinde = () => {
     })
    
     const [showError, setShowError] = useState({
-        text: 'Sell your property',
+        text: 'Vinde-ti proprietatea',
         className: ''
     });
 
@@ -36,7 +36,7 @@ const Vinde = () => {
 
     useEffect(()=>{
         console.log("update dateIntrare", dateIntrare)
-    },[])
+    },[dateIntrare])
 
     // useEffect(()=>{
     //     store.subscribe(()=>{
@@ -56,16 +56,13 @@ const Vinde = () => {
 
 
     const schimbaDateIntrare = (e)=>{
-        //pune textul initial sus de fiecare data cand se schimba datele de intrare
-        <span className=''>Sell your property</span>  
-        //
 
         setShowError({
-            text: 'Sell your property',
+            text: 'Vinde-ti proprietatea',
             className: ''
         });
 
-        if(e.target.name == 'images')
+        if(e.target.name == 'imagini')
         {
             seteazaDateIntrare((prev)=>{
                 prev[e.target.name] = getImagesLinks(e.target.value);
@@ -100,7 +97,8 @@ const Vinde = () => {
 
     const trimiteModifIntrari = async (e)=>{
         e.preventDefault();
-        if(dateIntrare.nume != '' && dateIntrare.numarContact != '' && dateIntrare.tip != '' && dateIntrare.descriere != ''  && dateIntrare.status  != '' && dateIntrare.material != '' && dateIntrare.airport_time != ''  && dateIntrare.hospital_time != ''  && dateIntrare.city_center != '')
+
+        if(dateIntrare.nume != '' && dateIntrare.numarContact != '' && dateIntrare.tip != '' && dateIntrare.descriere != ''  && dateIntrare.status  != '' && dateIntrare.material != ''&& dateIntrare.bai != ''&& dateIntrare.pret != ''&& dateIntrare.camere != ''&& dateIntrare.etaje != ''&& dateIntrare.locatie != '')
         {
             console.log("submit ok")
             console.log(dateIntrare);
@@ -108,7 +106,7 @@ const Vinde = () => {
                 headers:{
                     'Content-Type' : 'application/json',
                     'Accept' : 'application/json',
-                    'auth-token': localStorage.getItem('token') 
+                    //'auth-token': localStorage.getItem('token') 
                 },
                 body:{
                     ...dateIntrare
@@ -117,7 +115,7 @@ const Vinde = () => {
 
             try{
 
-                await axios.post('api/newpost',config)
+                await axios.post('http://localhost:5000/api/user/newsell',config)
                 .then((ceva)=>{
                     console.log("redirect la pagina cu anuntul creat!")
                     // let new_link = ceva.dateIntrare.newProperty._id;
@@ -158,7 +156,6 @@ const Vinde = () => {
             console.log("not ok submit!")
             console.log(dateIntrare);
 
-            <span className='error-css'>Complete all fields!</span> 
             setShowError({
                 text: 'Complete all fields!',
                 className: 'error-css'
