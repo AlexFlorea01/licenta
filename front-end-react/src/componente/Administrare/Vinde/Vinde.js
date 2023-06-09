@@ -2,7 +2,7 @@ import './Vinde.css';
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import Mapa from '../Mapa/Mapa';
 
 const Vinde = () => {
 
@@ -167,7 +167,7 @@ const Vinde = () => {
     return(
         <div className="selected-screen-container">
             <div className="selected-screen-map-container">
-                {/* <MapComponent /> */}
+                <Mapa/>
             </div>
             <div className="selected-screen-right-content">
                 <div className="selected-screen-right-content-padding">
