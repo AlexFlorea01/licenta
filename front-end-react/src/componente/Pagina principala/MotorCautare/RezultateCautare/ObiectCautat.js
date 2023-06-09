@@ -4,8 +4,12 @@ import pozaBaie from '../../../../imagini/bath.png';
 import './RezultateCautare.css';
 import { useEffect } from 'react';
 import React from'react';
+import { useNavigate } from 'react-router-dom';
 
 const ObiectCautat = ({obiect}) => {
+
+    const navigate = useNavigate();
+
     const cutText = (string)=>{
         if(string.length < 193)
         {
@@ -60,7 +64,7 @@ const ObiectCautat = ({obiect}) => {
                             <span>$ {obiect.pret}</span>
                         </div>
                         <div className="item-padding" >
-                            <button >VEZI</button>
+                            <button onClick={()=>{navigate(`/proprietate/${obiect._id}`)}}>VEZI</button>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ import React from'react';
 
 const Vinde = () => {
 
-        const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const[dateIntrare, seteazaDateIntrare] = useState({
         nume: '',
@@ -25,6 +25,16 @@ const Vinde = () => {
         lat:0,
         long:0
     })
+
+    const hadnleCustomLatLong = (param1, param2)=>
+    {
+        seteazaDateIntrare((prev)=>{
+            let copy = {...prev}
+            copy.lat = param1
+            copy.long = param2
+            return copy
+        })
+    }
    
     const [showError, setShowError] = useState({
         text: 'Vinde-ti proprietatea',
@@ -119,11 +129,12 @@ const Vinde = () => {
                 await axios.post('http://localhost:5000/api/user/newsell',config)
                 .then((ceva)=>{
                     console.log("redirect la pagina cu anuntul creat!")
-                    // let new_link = ceva.dateIntrare.newProperty._id;
-                    // console.log(ceva.dateIntrare.newProperty._id);
-                    // navigate(`/property/${new_link}`)
+                    let new_link = ceva.dateIntrare.newProperty._id;
+                    console.log(ceva.dateIntrare.newProperty._id);
+
+                    navigate(`/proprietate/${new_link}`)
                 })
-                //eroare prina de catch-ul cu un level mai afara
+                //eroare prinsa de catch-ul cu un level mai afara
             }
             catch(err){
                console.log(err.response.status)
@@ -168,7 +179,7 @@ const Vinde = () => {
     return(
         <div className="selected-screen-container">
             <div className="selected-screen-map-container">
-                {/* <Mapa/> */}
+                <Mapa setLangLong={hadnleCustomLatLong}/>
             </div>
             <div className="selected-screen-right-content">
                 <div className="selected-screen-right-content-padding">

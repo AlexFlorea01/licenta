@@ -1,17 +1,100 @@
-import './Proprietate.css';
 import React from'react';
-import { useEffect } from 'react';
+import './Proprietate.css';
+import { useEffect, useState } from 'react';
 import Footer from '../Pagina principala/Footer/Footer';
 import Meniu from '../Pagina principala/Meniu/Meniu';
+
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import {useParams} from 'react-router-dom'
+import axios from 'axios';
 
 import RightArrowIcon from '../../imagini/right-arrow.png';
 
-const AdminProprietate = () => {
+
+
+const AdminProprietate = (proprietati) => {
+    const [continut, seteazaContinut] = useState(<p>Loading</p>);   
+    const params = useParams();
+
+
+    useEffect(()=>{
+        let idTest = params.id;
+        console.log("idTest:",idTest);
+        logicDecide(idTest);
+    },[])
+
+    const InvalidProperty = ({text})=>{
+    return(
+        <div className="">
+            <Meniu/>
+            <span>{text}</span>
+        </div>
+    )
+}
+
+    
+
+    const logicDecide = async(idPropperty)=>{
+        console.log("test param:", idPropperty)
+        //console.log(localStorage.getItem('token'))
+        const config = {
+            headers:{
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                //'auth-token': localStorage.getItem('token') 
+            },
+            body:{
+                id_to_check: idPropperty
+            }
+        }
+        console.log("config:",config)
+        try{
+            await axios.post('http://localhost:5000/api/user/gasesteProprietate',config)
+            .then((ceva)=>{
+                console.log("SUCCES:",ceva)
+                seteazaContinut(<Proprietate data={ceva.data.gasit} />)
+            })
+            .catch((err)=>{
+                if(err.response.status == 404 )
+                {
+                    seteazaContinut( <InvalidProperty 
+                                    text="This property does not exists!"
+                                />)
+                }
+                else if(err.response.status == 500)
+                {
+                    seteazaContinut(<InvalidProperty
+                                    text="Internal server problem! (500)"
+                                />)
+                }
+                else if(err.response.status == 403)
+                {
+                    seteazaContinut(<InvalidProperty
+                        text="You need to be logged to see the complete property!"
+                    />)
+                }
+            })
+            
+
+             
+        }
+        catch(err)
+        {
+            console.log("PROBLEM")
+            seteazaContinut(<InvalidProperty
+                text="Internal server problem! (500)"
+            />)
+        }
+        
+
+    }
 
     return ( 
          <>
-        {content}
+        {continut}
         </>
      );
 }
@@ -224,6 +307,7 @@ const Proprietate = ({data}) => {
             </div>
             <div className="property-map-container">
                 {/* <PropertyMap lat={data.lat} long={data.long}/> */}
+                
             </div>
             <div className="property-others">
                 <div className="others-similar-props">
@@ -239,4 +323,4 @@ const Proprietate = ({data}) => {
      );
 }
  
-export default Proprietate;
+export default AdminProprietate;
