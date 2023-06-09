@@ -1,6 +1,6 @@
 import ObiectCautat from './ObiectCautat';
 import './RezultateCautare.css';
-
+import React from'react';
 import { useEffect } from 'react';
 
 const RezultateCautare = ({filters}) => {

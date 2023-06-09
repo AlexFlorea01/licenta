@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Meniu from '../Pagina principala/Meniu/Meniu';
 import axios from 'axios';
+import React from'react';
 
 const Inregistrare = () => {
     

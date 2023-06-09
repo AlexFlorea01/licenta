@@ -4,7 +4,7 @@ import MailIcon from '../../../imagini/gmail.png';
 import Instagram from '../../../imagini/instagram.png';
 import Facebook from '../../../imagini/facebook.png';
 import Whatsapp from '../../../imagini/whatsapp.png';
-
+import React from'react';
 import { useNavigate,Link } from 'react-router-dom';
 
 

@@ -3,6 +3,7 @@ import pozaEtaje from '../../../../imagini/floors.png';
 import pozaBaie from '../../../../imagini/bath.png';
 import './RezultateCautare.css';
 import { useEffect } from 'react';
+import React from'react';
 
 const ObiectCautat = ({obiect}) => {
     const cutText = (string)=>{

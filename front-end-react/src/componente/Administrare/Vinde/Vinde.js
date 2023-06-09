@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Mapa from '../Mapa/Mapa';
+import React from'react';
 
 const Vinde = () => {
 
@@ -129,7 +130,8 @@ const Vinde = () => {
                if(err.response.status == 401 || err.response.status == 403)
                {
                 //arat eroarea specifica
-                   <span className='error-css'>You are unauthorized to do this action!</span>  
+                
+                   
 
                    console.log("SETEZ STATE 403 401")
                    setShowError({
@@ -140,8 +142,7 @@ const Vinde = () => {
                }
                else if(err.response.status == 400)
                {
-                   <span className='error-css'>You are unauthorized to do this action!</span> 
-
+                  
                    setShowError({
                     text: 'There was a problem saving into dateIntrarebase!',
                     className: 'error-css'
@@ -167,7 +168,7 @@ const Vinde = () => {
     return(
         <div className="selected-screen-container">
             <div className="selected-screen-map-container">
-                <Mapa/>
+                {/* <Mapa/> */}
             </div>
             <div className="selected-screen-right-content">
                 <div className="selected-screen-right-content-padding">

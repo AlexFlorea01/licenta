@@ -197,6 +197,12 @@ app.post('/api/user/newsell',async (req,res)=>{
     }
 })
 
+//////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+//acopera partea de Buy
+app.post('/api/user/buy',async (req,res)=>{
+
+})
 
 app.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT}`)

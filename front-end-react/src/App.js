@@ -1,10 +1,11 @@
 import './App.css';
-
+import React from'react';
 import Acasa from './componente/Pagina principala/Acasa';
 import Despre from './componente/About/Despre';
 import Inregistrare from './componente/Inregistrare-Conectare/Inregistrare';
 import Conectare from './componente/Inregistrare-Conectare/Conectare';
 import Administrare from './componente/Administrare/Administrare';
+import Proprietate from './componente/Proprietate/Proprietate';
 
 import {
   BrowserRouter,
@@ -28,6 +29,7 @@ function App() {
         <Route path="/inregistrare" element={<Inregistrare/>}/>
         <Route path="/conectare" element={<Conectare/>}/>
         <Route path="/administrare" element={<Administrare/>}/>
+        <Route path="/proprietate/:id" element={<Proprietate/>}/>
         <Route path="/*" element={<FallbackComponent/>}/>
       </Routes>
     </BrowserRouter>

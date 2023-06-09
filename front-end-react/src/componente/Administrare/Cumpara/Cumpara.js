@@ -1,6 +1,7 @@
 import './Cumpara.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import React from'react';
 
 const Cumpara = () => {
 
@@ -29,15 +30,25 @@ const Cumpara = () => {
     },[dateIntrare])
 
     //buton submit
-    const trimiteModifIntrari = (event) => {
+    const trimiteModifIntrari = async (event) => {
         event.preventDefault(); // previne reincarcarea browserului la submit buton
+        const config = {
+            headers:{
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+            },
+            body:{
+                ...dateIntrare
+            }
+        }
+        
         try{
 
-            axios.post('http://localhost:5000/api/user',dateIntrare)
+            await axios.post('http://localhost:5000/api/user/proprietatiFiltrate',config)
             .then((resp)=>{
-               console.log("cumpara logat",resp.data);
-               console.log("RESPOnse in buy",resp.data.rasp);
-               //setItems(resp.data.rasp);
+                console.log("sss",resp.data);
+                console.log("RESPOnse in buy",resp.data.rasp);
+                //setItems(resp.data.rasp);
             })
         }
         catch(err){

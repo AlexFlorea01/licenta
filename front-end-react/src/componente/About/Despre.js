@@ -1,5 +1,7 @@
 import './Despre.css';
 import Meniu from '../Pagina principala/Meniu/Meniu';
+import React from'react';
+
 const Despre = () => {
     return ( 
          <div className="about-container">

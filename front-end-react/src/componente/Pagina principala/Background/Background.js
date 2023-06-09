@@ -1,5 +1,6 @@
 import Background1 from '../../../imagini/background1.jpg';
 import './Background.css';
+import React from'react';
 
 const Background = () => {
     return (  

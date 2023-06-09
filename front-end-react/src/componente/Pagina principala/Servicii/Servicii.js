@@ -3,6 +3,7 @@ import HomeIcon from '../../../imagini/house.png';
 import PadLock from '../../../imagini/security.png';
 import SettingsIcon from '../../../imagini/furniture.png';
 import GoalIcon from '../../../imagini/support.png';
+import React from'react';
 
 
 const Servicii = () => {
