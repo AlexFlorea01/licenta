@@ -117,7 +117,7 @@ const Vinde = () => {
                 headers:{
                     'Content-Type' : 'application/json',
                     'Accept' : 'application/json',
-                    //'auth-token': localStorage.getItem('token') 
+                    'auth-token': localStorage.getItem('token') 
                 },
                 body:{
                     ...dateIntrare

@@ -143,8 +143,9 @@ app.post('/api/user/proprietatiFiltrate',async (req,res)=>{
 /////////////////////////////////////////////////////
 //acopera partea de Sell
 app.post('/api/user/newsell',async (req,res)=>{
-    token=1;
-    //const token = req.body.headers['auth-token'];
+
+    const token = req.body.headers['auth-token'];
+    
     if(!token)
     {
         //nu este furnizat un token
