@@ -1,8 +1,11 @@
 import React from'react';
 import './Proprietate.css';
 import { useEffect, useState } from 'react';
+
 import Footer from '../Pagina principala/Footer/Footer';
 import Meniu from '../Pagina principala/Meniu/Meniu';
+import MapaProprietate from './MapaPropriete/MapaProprietate';
+import AlteProprietati from './AlteProprietati/AlteProprietati';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -21,6 +24,7 @@ const AdminProprietate = (proprietati) => {
 
 
     useEffect(()=>{
+        //useParams() este utilizat pentru a extrage valoarea parametrului id
         let idTest = params.id;
         console.log("idTest:",idTest);
         logicDecide(idTest);
@@ -306,7 +310,7 @@ const Proprietate = ({data}) => {
                 
             </div>
             <div className="property-map-container">
-                {/* <PropertyMap lat={data.lat} long={data.long}/> */}
+                <MapaProprietate lat={data.lat} long={data.long}/>
                 
             </div>
             <div className="property-others">
@@ -315,7 +319,7 @@ const Proprietate = ({data}) => {
                 </div>
                 <div className="border-separator-desc"></div>
                 <div className="other-container">
-                    {/* <OtherProperty /> */}
+                    <AlteProprietati/>
                 </div>
             </div>
             <Footer />

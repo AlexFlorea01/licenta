@@ -49,22 +49,6 @@ const Vinde = () => {
         console.log("update dateIntrare", dateIntrare)
     },[dateIntrare])
 
-    // useEffect(()=>{
-    //     store.subscribe(()=>{
-    //         console.log("store updated!")
-    //         console.log(store.getState())
-    //         setdateIntrare((prev)=>{
-    //             let state = store.getState().mapCoord;
-    //             return{
-    //                 ...prev,
-    //                 lat: state.lat,
-    //                 long: state.long
-    //             }
-    //         })
-    //     })
-    // },[])
-    
-
 
     const schimbaDateIntrare = (e)=>{
 
@@ -142,8 +126,6 @@ const Vinde = () => {
                {
                 //arat eroarea specifica
                 
-                   
-
                    console.log("SETEZ STATE 403 401")
                    setShowError({
                        text: 'You are unauthorized to do this action!',
@@ -221,7 +203,7 @@ const Vinde = () => {
                                 <div class="select">
                                     <select onChange={schimbaDateIntrare} name="tip">
                                         <option value="">-</option>
-                                        <option value="apartament">Apartament</option>
+                                        <option value="Apartament">Apartament</option>
                                         <option value="Casa">Casa</option>
                                         <option value="Spatiu">Spatiu</option>
                                         <option value="Depozit">Depozit</option>

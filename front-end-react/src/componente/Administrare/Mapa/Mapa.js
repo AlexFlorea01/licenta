@@ -32,13 +32,13 @@ const [position, setPosition] = useState(null)
       
         return position === null ? null : (
           <Marker position={position}>
-            <Popup>Building location.</Popup>
+            <Popup>Locatia proprietatii</Popup>
           </Marker>
         )
       }
       
     return(
-        <MapContainer center={[47.1585, 27.6014]} zoom={13} scrollWheelZoom={false}>
+        <MapContainer center={[47.1585, 27.6014]} zoom={12} scrollWheelZoom={true}>
         <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -145,7 +145,7 @@ app.post('/api/user/proprietatiFiltrate',async (req,res)=>{
 app.post('/api/user/newsell',async (req,res)=>{
 
     const token = req.body.headers['auth-token'];
-    
+
     if(!token)
     {
         //nu este furnizat un token
@@ -275,7 +275,23 @@ app.post('/api/user/gasesteProprietate',async (req,res)=>{
         }
     }
 })
-
+//////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+//acopera partea de Alte Proprietati
+app.get('/api/user/AlteProprietati',async (req,res)=>{
+    // countDocuments() obține numărul total de documente din colecția PropertyModel
+    const count = await proprietatiModel.countDocuments({});
+  
+  if (count <= 3) {
+    const temp = await proprietatiModel.find({});
+    res.send({ random: temp });
+  } else {
+    //aggregate() această metodă permite procesarea și transformarea datelor din colecție, folosind diferite etape de agregare, cum ar fi filtrarea, sortarea, gruparea și altele.
+    //Operatorul $sample este unul dintre operatorii de agregare disponibili în MongoDB utilizat pentru a selecta aleator un număr specificat de documente dintr-o colecție.
+    const randomDocuments = await proprietatiModel.aggregate([{ $sample: { size: 3 } }]);
+    res.send({ random: randomDocuments });
+  }
+})
 //////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 app.listen(PORT,()=>{
