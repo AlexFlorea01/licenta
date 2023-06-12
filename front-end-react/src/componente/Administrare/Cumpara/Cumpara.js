@@ -2,8 +2,27 @@ import './Cumpara.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import React from'react';
+import ObiectCautat from '../../Pagina principala/MotorCautare/RezultateCautare/ObiectCautat';
+import MapaCumpara from './MapaCumpara';
 
 const Cumpara = () => {
+    
+    const [mapItems, setMapItems] = useState({
+        markers: null,
+        selected: null
+    })
+
+    const [items, setItems] = useState(null);
+
+        const handleSelecClick = (data)=>{
+        console.log("selected", data);
+        setMapItems((prev)=>{
+            return{
+                ...prev,
+                selected: [data.lat, data.long]
+            }
+        })
+    }
 
     const[dateIntrare, seteazaDateIntrare] = useState({
         locatie:'',
@@ -26,8 +45,24 @@ const Cumpara = () => {
     }
     
     useEffect(()=>{
-        console.log(dateIntrare)
-    },[dateIntrare])
+            let new_markers = [];
+            if(items != null && items.length >0)
+            {
+                items.forEach((el)=>{
+                    let temp_arr = [];
+                    temp_arr[0] = el.lat;
+                    temp_arr[1] = el.long;
+                    new_markers.push(temp_arr);
+                })
+                setMapItems((prev)=>{
+                    return{
+                        ...prev,
+                        markers: [...new_markers]
+                    }
+                })
+            }
+        },[items]);
+
 
     //buton submit
     const trimiteModifIntrari = async (event) => {
@@ -48,7 +83,7 @@ const Cumpara = () => {
             .then((resp)=>{
                 console.log("sss",resp.data);
                 console.log("RESPOnse in buy",resp.data.rasp);
-                //setItems(resp.data.rasp);
+                setItems(resp.data.rasp);
             })
         }
         catch(err){
@@ -59,7 +94,7 @@ const Cumpara = () => {
     return ( 
         <div className="buy-container">
             <div className="map-buy-container">
-                {/* <MapBuy data={mapItems}/> */}
+                <MapaCumpara data={mapItems}/>
             </div>
 
             <div className="content-container">
@@ -221,14 +256,14 @@ const Cumpara = () => {
                 </div>
                 <div className="content-container-search-results" >
                 {
-                    // items == null ? null :
-                    // items.map((el)=>{
-                    //     return (
-                    //     <div className="test-class" >
-                    //         {/* <ItemSearched obj={el} />  */}
-                    //     </div>
-                    //     )
-                    // })
+                    items == null ? null :
+                    items.map((el)=>{
+                        return (
+                        <div className="test-class" onClick={()=>{handleSelecClick(el)}}>
+                            <ObiectCautat obiect={el} /> 
+                        </div>
+                        )
+                    })
                 }
                 </div>
             </div>
