@@ -15,7 +15,7 @@ const RezultateCautare = ({filters}) => {
             {
                 filters == null ? null:
                 filters.map((element)=>{
-                    return <ObiectCautat obiect={element} />
+                    return <ObiectCautat obiect={element}/>
                 })
             }
             

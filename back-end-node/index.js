@@ -149,7 +149,7 @@ app.post('/api/user/newsell',async (req,res)=>{
     if(!token)
     {
         //nu este furnizat un token
-        res.status(403).json({error: "Acces denied!"})
+        return res.status(403).json({error: "Acces denied!"})
     }
     else
     {
@@ -184,16 +184,16 @@ app.post('/api/user/newsell',async (req,res)=>{
             })
             try{
                 const savedProperty =  await newProperty.save();
-                res.json({newProperty: savedProperty});
+                return res.json({newProperty: savedProperty});
             }catch(err)
             {
-                res.status(400).json({error: 'Unable to save into db!'})
+                return res.status(400).json({error: 'Unable to save into db!'})
             }
             
             
         }
         catch(err){
-            res.status(401).json({error: "Invalid token!"})
+            return res.status(401).json({error: "Invalid token!"})
         }
     }
 })

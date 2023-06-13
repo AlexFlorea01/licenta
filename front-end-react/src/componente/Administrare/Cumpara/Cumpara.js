@@ -83,7 +83,7 @@ const Cumpara = () => {
             .then((resp)=>{
                 console.log("sss",resp.data);
                 console.log("RESPOnse in buy",resp.data.rasp);
-                setItems(resp.data.rasp);
+                setItems(resp.data);
             })
         }
         catch(err){

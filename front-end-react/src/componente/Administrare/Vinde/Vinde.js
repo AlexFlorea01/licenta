@@ -112,9 +112,9 @@ const Vinde = () => {
 
                 await axios.post('http://localhost:5000/api/user/newsell',config)
                 .then((ceva)=>{
-                    console.log("redirect la pagina cu anuntul creat!")
-                    let new_link = ceva.dateIntrare.newProperty._id;
-                    console.log(ceva.dateIntrare.newProperty._id);
+                    console.log("redirect la pagina cu anuntul creat!", ceva)
+                    let new_link = ceva.data.newProperty._id;
+                    console.log(new_link);
 
                     navigate(`/proprietate/${new_link}`)
                 })
