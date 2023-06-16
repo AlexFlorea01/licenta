@@ -334,3 +334,71 @@
 
     min-width: 850px;
 }
+
+
+.delete-prop
+{
+    padding: 5px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+.delete-prop:hover 
+{
+    cursor: pointer;
+}
+.property-reviews
+{
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+.property-reviews-add
+{
+    display: flex;
+    flex-direction: column;
+}
+.property-reviews-add textarea
+{
+    resize: none;
+    margin-top: 10px;
+    height: 100px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 15px;
+}
+.property-reviews-add button 
+{
+    padding: 10px 20px;
+    color: black;
+    background: #f39c12;
+    margin-top: 20px;
+    width: 150px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    font-weight: bold;
+}
+.property-reviews-add button:hover 
+{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+.property-reviews-add-val
+{
+    padding: 20px 0px;
+
+}
+.property-reviews-add-val select 
+{
+    border: 1px solid black;
+    margin-left: 20px;
+}
+
+.property-reviews-view {
+    margin-top: 20px;
+}

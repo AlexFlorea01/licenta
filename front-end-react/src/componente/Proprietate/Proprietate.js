@@ -6,6 +6,7 @@ import Footer from '../Pagina principala/Footer/Footer';
 import Meniu from '../Pagina principala/Meniu/Meniu';
 import MapaProprietate from './MapaPropriete/MapaProprietate';
 import AlteProprietati from './AlteProprietati/AlteProprietati';
+import { useNavigate } from 'react-router-dom';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -19,6 +20,13 @@ import RightArrowIcon from '../../imagini/right-arrow.png';
 
 
 const AdminProprietate = (proprietati) => {
+
+    let navigate = useNavigate();
+
+    const [haveAcces, setHaveAcces] = useState(false);
+
+
+
     const [continut, seteazaContinut] = useState(<p>Loading</p>);   
     const params = useParams();
 
@@ -37,9 +45,7 @@ const AdminProprietate = (proprietati) => {
             <span>{text}</span>
         </div>
     )
-}
-
-    
+    }
 
     const logicDecide = async(idPropperty)=>{
         console.log("test param:", idPropperty)
@@ -59,7 +65,7 @@ const AdminProprietate = (proprietati) => {
             await axios.post('http://localhost:5000/api/user/gasesteProprietate',config)
             .then((ceva)=>{
                 console.log("SUCCES:",ceva)
-                seteazaContinut(<Proprietate data={ceva.data.gasit} />)
+                seteazaContinut(<Proprietate data={ceva.data.gasit}/>)
             })
             .catch((err)=>{
                 if(err.response.status == 404 )
@@ -95,10 +101,28 @@ const AdminProprietate = (proprietati) => {
         
 
     }
+    useEffect(async ()=>{
 
+            let localToken = window.localStorage.getItem('token')
+            if(localToken == undefined || localToken == '') navigate('/conectare');
+
+            axios.post('http://localhost:5000/api/user/check-token',{token: localToken})
+                .then(res=>{
+                    console.log("have acces:",res)
+                    setHaveAcces(true);
+                    // setMyUserId(res.data._id)
+                })
+            .catch((err)=>{
+                console.log("forbidden pagE")
+                navigate('/conectare');
+            })
+
+    },[])
     return ( 
          <>
-        {continut}
+            {
+                haveAcces == false ? <p>In curs verificare token...</p> :continut
+            }
         </>
      );
 }
@@ -108,11 +132,70 @@ const AdminProprietate = (proprietati) => {
 
 
 const Proprietate = ({data}) => {
+    let navigate = useNavigate();
+    
+    const params = useParams();
 
-    useEffect(()=>{
-        console.log("data in proprietate", data);
+    const [myUserID, setMyUserId] = useState(undefined);
+    const [myProp, setMyProp] = useState(false);
+    const checkMyProp = async ()=>{
+        //params.id;
+        //myUserID
+        //=> seteaza myProp (true, false)
+
+        await axios.post('http://localhost:5000/api/user/ownership',{
+            user: myUserID,
+            prop: params.id
+        })
+        .then((dataResp)=>{
+            console.log(" ownsership resp1:",dataResp.data)
+            setMyProp(true);
+        })
+        .catch((err)=>{
+            console.log("nu se poate verifica ownership:", err)
+        })
+
+    }
+
+    useEffect(async ()=>{
+
+        let localToken = window.localStorage.getItem('token')
+        if(localToken == undefined || localToken == '') navigate('/conectare');
+
+        axios.post('http://localhost:5000/api/user/check-token',{token: localToken})
+            .then(res=>{
+                console.log("have acces:",res)
+                setMyUserId(res.data._id)
+            })
+        .catch((err)=>{
+            console.log("forbidden pagE")
+            navigate('/conectare');
+        })
+
     },[])
+    useEffect(()=>{
+        console.log("myUserID upate:",myUserID)
+        if(myUserID !== undefined)
+        {
+            checkMyProp()
+        }
+    },[myUserID]) 
 
+    const deleteProp = ()=>{
+        let propIdToDelete = params.id;
+        console.log("delte prop:", propIdToDelete)
+        axios.post('http://localhost:5000/api/proprietati/sterge',{
+            idProp: propIdToDelete
+        })
+        .then(res=>{
+            console.log("delete prop ok:", res.data)
+            navigate("/")
+        })
+        .catch((err)=>{
+            console.log("nu se poate sterge prop:", err)
+        })
+
+    }
     //setari slider
     const setari = {
         dots: true,
@@ -124,6 +207,64 @@ const Proprietate = ({data}) => {
         className: "slides"
     }
 
+
+    const [review, setReview] = useState({
+        text: '',
+        rating: 1
+    })
+    const handleTextReview = (e)=>{
+        setReview((prev)=>{
+            let copy = {...prev}
+            copy['text'] = e.target.value
+            return copy
+        })
+    }
+    const handleRatingChange = (e)=>{
+        setReview((prev)=>{
+            let copy = {...prev}
+            copy['rating'] = e.target.value
+            return copy
+        })
+    }
+
+    const sendReview = async ()=>{
+        if(review.text === '' || review.text === ' ') {
+            alert('Completeza campul text dinr review')
+            return 
+        }
+        
+        let obj ={
+             propId: params.id,
+            text: review.text,
+            rating: review.rating,
+            userId: myUserID
+        }
+         await axios.post('http://localhost:5000/api/proprietati/adauga-review',{...obj})
+                .then(res=>{
+                    console.log("resp add review:", res.data)
+                    alert("review adaugat cu succes")
+                })
+            .catch((err)=>{
+                console.log("can't add review")
+                alert("can't add review")
+            })
+    }
+    const [oldReview, setOldReview] = useState([]);
+    const fetchOldReview = async ()=>{
+        await axios.post('http://localhost:5000/api/proprietati/review',{
+            propId: params.id
+        })
+            .then(res=>{
+                console.log("old review:", res.data)
+                setOldReview(res.data);
+            })
+            .catch((err)=>{
+                console.log("can't get old review")
+            })
+    }
+    useEffect(()=>{
+        fetchOldReview();
+    },[])
     return ( 
         <div className="property-page-container">
             <Meniu showSignUp={true}/>
@@ -138,6 +279,9 @@ const Proprietate = ({data}) => {
                                 {data.nume}
                             </div>
                             <div className="upper-title-infos">
+                                {
+                                    myProp == true ? <button className="delete-prop" onClick={deleteProp}>Delete</button> : null
+                                }
                                 <div className="upper-infos-box bg-orange">
                                     {data.status}
                                 </div>
@@ -312,6 +456,31 @@ const Proprietate = ({data}) => {
             <div className="property-map-container">
                 <MapaProprietate lat={data.lat} long={data.long}/>
                 
+            </div>
+            <div className='property-reviews'>
+                <div className='property-reviews-add'>
+                    <h3> Adauga review</h3>
+                    <textarea
+                        onChange={handleTextReview}
+                        value={review.text}
+                        placeholder='review...'
+                    >
+                        
+                    </textarea>
+                    <div className='property-reviews-add-val'>
+                        <span>Rating</span>
+                        <select name="cars" id="cars" onChange={handleRatingChange} value={review.rating}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            </select>
+                    </div>
+                    <button onClick={sendReview}>
+                        Adauga review
+                    </button>
+                </div>
+                <div className='property-reviews-view'>
+                    <h3> Alte reviews</h3>
+                </div>
             </div>
             <div className="property-others">
                 <div className="others-similar-props">

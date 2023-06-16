@@ -5,7 +5,7 @@ import React from'react';
 
 const Cautare = ({changeHomeState}) => {
 
-        const[dateIntrare, seteazaDateIntrare] = useState({
+    const[dateIntrare, seteazaDateIntrare] = useState({
         locatie:'',
         tip:'',
         status: '',
@@ -17,6 +17,16 @@ const Cautare = ({changeHomeState}) => {
         etaje: '',
     })
 
+    useEffect(()=>{
+        Object.keys(dateIntrare).forEach((el)=>{
+            if(dateIntrare[el] !== '')
+            {
+                setTipCautare(false);
+                return 
+            }
+        })
+    },[dateIntrare])
+
     const schimbaDateIntrare = (ceTastezNouEvent)=>{
         seteazaDateIntrare((dateIntrareInitiale)=>{
             let  dateIntrareNoi = {...dateIntrareInitiale};
@@ -26,12 +36,11 @@ const Cautare = ({changeHomeState}) => {
     }
     
     useEffect(()=>{
-        console.log(dateIntrare)
+        console.log("asdasdasdas:",dateIntrare)
     },[dateIntrare])
 
 
-    const trimiteModifIntrari = (event) => {
-        event.preventDefault(); // previne reincarcarea browserului la submit buton
+    const trimiteModifIntrari = () => {
         const config = {
             headers:{
                 'Content-Type' : 'application/json',
@@ -55,6 +64,54 @@ const Cautare = ({changeHomeState}) => {
         }
     }
 
+    const [tipCautare, setTipCautare] = useState(true);
+
+    function preiaLatitudineLongitudine() {
+        if (navigator.geolocation) {
+            console.log("id ok")
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var latitudine = position.coords.latitude;
+            var longitudine = position.coords.longitude;
+            console.log("Latitudine: " + latitudine);
+            console.log("Longitudine: " + longitudine);
+
+            axios.post('http://localhost:5000/api/user/propietatiLocatie',{
+                lat: latitudine,
+                long: longitudine
+            })
+            .then((resp)=>{
+                console.log("update cautare locatie",resp.data);
+                changeHomeState(resp.data);
+            })
+            .catch((err)=>{
+                console.log("nu se po cauta prop dupa locatie")
+            })
+
+            return [latitudine, longitudine]
+            
+        });
+        } else {
+            console.log("Geolocalizarea nu este suportată de browser-ul tău.");
+        }
+    } 
+    const cautaDupaLocatie = ()=>{
+        console.log("enter 1")
+        preiaLatitudineLongitudine()
+    }
+
+    const handleGenericClick = (event)=>{
+        event.preventDefault(); // previne reincarcarea browserului la submit buton
+
+        if(tipCautare == true)
+        {
+           cautaDupaLocatie() 
+        }
+        else 
+        {
+            trimiteModifIntrari()
+        }
+
+    }
     return (  
         <div className="home-search-component">
                 <div className="home-search-form-itself">
@@ -197,10 +254,10 @@ const Cautare = ({changeHomeState}) => {
                                         </select>
                                     </div>
                             </div>
-                            <div className="form-box-container" onClick={trimiteModifIntrari}>
+                            <div className="form-box-container" onClick={handleGenericClick}>
                                 <span style={{color: 'transparent',marginBottom: '5px'}}>spatiu</span>
                                     <div className="box-container-submit-btn">
-                                        <span>CAUTĂ</span>
+                                        <span>{tipCautare == true ? "Locatie": "Filtre"}</span>
                                     </div>
                             </div>
 

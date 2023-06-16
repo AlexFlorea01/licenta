@@ -3,7 +3,7 @@ import LogoIcon from '../../imagini/logo.png';
 
 import { useNavigate } from 'react-router-dom';
 import React,{useEffect, useState} from 'react';
-
+import axios from 'axios';
 import Cumpara from './Cumpara/Cumpara';
 import Vinde from './Vinde/Vinde';
 
@@ -12,14 +12,23 @@ const Administrare = () => {
 
     let navigate = useNavigate();
 
-    useEffect(()=>{
-        let token = window.localStorage.getItem('token')
-        // axios.post(/api/verifica-token,{}) - de implementat asa cu functie separata care verifica token-ul iar eu verific doar raspunsul pozitiv/negativ aici
-        if(token == undefined || token !== 'abc')
-        {
+    const [haveAcces, setHaveAcces] = useState(false);
+
+    useEffect(async ()=>{
+
+        let localToken = window.localStorage.getItem('token')
+        if(localToken == undefined || localToken == '') navigate('/conectare');
+
+        axios.post('http://localhost:5000/api/user/check-token',{token: localToken})
+            .then(res=>{
+                console.log(res)
+                setHaveAcces(true)
+            })
+        .catch((err)=>{
+            console.log("forbidden pagE")
             navigate('/conectare');
-        }
-        
+        })
+
     },[])
 
     const logOutAction = () => {
@@ -39,8 +48,14 @@ const Administrare = () => {
                 seteazaEranul('cumpara')
             }
         }
-    return ( 
-        <div className="home-container">
+    return (
+
+        <>
+        {
+            haveAcces == false ? <p>In curs verificare token...</p> :
+            <div className="home-container">
+
+
             <div className="home-menu-bar">
                 <div className="home-menu-bar-nav">
                     <div className="dashboard-menu-logo-container">
@@ -76,7 +91,10 @@ const Administrare = () => {
                     <Vinde/>
                 }
             </div>
-        </div>
+            </div>
+        }
+        </>
+        
      );
 }
  
