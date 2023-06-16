@@ -16,16 +16,26 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios';
 
 import RightArrowIcon from '../../imagini/right-arrow.png';
+import UserImg from '../../imagini/user.png';
+import StartImg from '../../imagini/star.png';
 
-
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const AdminProprietate = (proprietati) => {
 
     let navigate = useNavigate();
 
     const [haveAcces, setHaveAcces] = useState(false);
-
-
 
     const [continut, seteazaContinut] = useState(<p>Loading</p>);   
     const params = useParams();
@@ -243,6 +253,7 @@ const Proprietate = ({data}) => {
                 .then(res=>{
                     console.log("resp add review:", res.data)
                     alert("review adaugat cu succes")
+                    fetchOldReview();
                 })
             .catch((err)=>{
                 console.log("can't add review")
@@ -265,6 +276,18 @@ const Proprietate = ({data}) => {
     useEffect(()=>{
         fetchOldReview();
     },[])
+    
+    function renderStarts(count) {
+    const paragraphs = Array.from({ length: count }, (_, index) => (
+        <img src={StartImg}/>
+    ));
+
+    return <>{paragraphs}</>;
+}
+
+
+    const [openReport, setOpenReport] = useState(false);
+
     return ( 
         <div className="property-page-container">
             <Meniu showSignUp={true}/>
@@ -472,7 +495,7 @@ const Proprietate = ({data}) => {
                         <select name="cars" id="cars" onChange={handleRatingChange} value={review.rating}>
                             <option value="1">1</option>
                             <option value="2">2</option>
-                            </select>
+                        </select>
                     </div>
                     <button onClick={sendReview}>
                         Adauga review
@@ -480,7 +503,43 @@ const Proprietate = ({data}) => {
                 </div>
                 <div className='property-reviews-view'>
                     <h3> Alte reviews</h3>
+                    {
+                        oldReview.map((el)=>{
+                            return(
+                                <div className='property-reviews-view-el'>
+                                    <div className='property-reviews-view-el-left'>
+                                        <img src={UserImg}/>
+                                        <p>{el.owner}</p>
+                                    </div>
+                                    <div className='property-reviews-view-el-right'>
+                                        <div className='property-reviews-view-el-right-top'>
+                                            {
+                                                renderStarts(Number(el.rating))
+                                            }
+                                        </div>
+                                        <p>{el.text}</p>
+                                    </div>
+                                </div>
+                                )
+                            
+                        })
+                    }
+                    
                 </div>
+                <div className='property-report'>
+                    <button
+                        onClick={()=>{
+                            setOpenReport((prev)=>{
+                                return !prev;
+                            })
+                        }}
+                    >Raporteaza</button>
+                    
+                </div>
+                {
+                    openReport == true ? <ReportBox myUserID={myUserID} propID={params.id} setOpenReport={setOpenReport}/> : null 
+                }
+                
             </div>
             <div className="property-others">
                 <div className="others-similar-props">
@@ -494,6 +553,68 @@ const Proprietate = ({data}) => {
             <Footer />
        </div>
      );
+}
+
+const ReportBox = ({myUserID, propID,setOpenReport})=>{
+
+    const [data, setData] = useState({
+        text: '',
+        motiv: 'Informatii False' 
+    })
+
+    const handleDataChange = (e)=>{
+        setData((prev)=>{
+            let copy = {...prev}
+            copy[e.target.name] = e.target.value
+            return copy
+        })
+    }
+    const trimiteReport = ()=>{
+        if(data.text == ''){
+            alert("Completeaza toata campurile")
+            return
+        }
+        let pachetReport = {
+            submitter: myUserID,
+            anunt: propID,
+            text: data.text,
+            motiv: data.motiv
+        }
+        console.log("pachetReport:",pachetReport)
+        axios.post('http://localhost:5000/api/proprietati/report',{...pachetReport})
+                .then(res=>{
+                    console.log("report re:", res.data)
+                    alert("Anunt raportat cu succes")
+                    setOpenReport(false);
+                })
+            .catch((err)=>{
+                alert("Eroare la raportare anunt!")
+            })
+    }
+    return(
+        <div className='report-box'>
+            <div className='report-box-center'>
+                <h4>Raporteaza </h4>
+                <textarea
+                    placeholder='Descrie problema...'
+                    name="text"
+                    value={data.text}
+                    onChange={handleDataChange}
+                >
+                    
+                </textarea>
+                <span>Motiv:</span>
+                <select 
+                    name="motiv"  
+                    onChange={handleDataChange} 
+                    value={data.motiv}>
+                    <option value="Informatii False">Informatii False</option>
+                    <option value="Informatii Eronate">Informatii Eronate</option>
+                </select>
+                <button onClick={trimiteReport}>Trimite report</button>
+            </div>
+        </div>
+    )
 }
  
 export default AdminProprietate;

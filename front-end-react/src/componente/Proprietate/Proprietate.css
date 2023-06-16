@@ -402,3 +402,113 @@
 .property-reviews-view {
     margin-top: 20px;
 }
+
+.property-reviews-view-el
+{
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid #f39c12;
+}
+.property-reviews-view-el-left
+{
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #f39c12;
+}
+.property-reviews-view-el-left img 
+{
+    height: 40px;
+    object-fit: contain;
+}
+
+.property-reviews-view-el-right
+{
+    margin-left: 30px;
+    
+}
+.property-reviews-view-el-right-top
+{
+    padding: 5px 0px;
+}
+.property-reviews-view-el-right-top img 
+{
+    height: 20px;
+    object-fit: contain;
+    margin-right: 5px;
+}
+.property-reviews-view-el-right p 
+{
+    font-size: 1rem;
+}
+
+.property-report
+{
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.property-report button 
+{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background-color: #f39c12;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+.property-report button:hover 
+{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.report-box
+{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.report-box-center
+{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.report-box-center h4 
+{
+    margin-bottom: 20px;
+}
+.report-box-center textarea
+{
+    resize: none;
+    height: 100px;
+    width: 400px;
+    padding: 10px;
+}
+.report-box-center span 
+{
+    margin-top: 20px;
+}
+.report-box-center button 
+{
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background-color: #f39c12;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+.report-box-center button:hover
+{
+    transform: scale(1.1);
+    cursor: pointer;
+}
