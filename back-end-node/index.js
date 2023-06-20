@@ -5,12 +5,13 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
 
 const utilizatorModel = require('./modele/modelUtilizator')
 const proprietatiModel = require('./modele/modelProprietate');
 const cors = require('cors')
 app.use(cors())
-
+app.use(bodyParser.urlencoded({ extended: false }));
 dotenv.config();
 
 let connect_to_mongose = async ()=>{
@@ -27,7 +28,6 @@ let connect_to_mongose = async ()=>{
     }
 }
 connect_to_mongose();
-
 
 //MiddleWare
 app.use(express.json());
@@ -72,6 +72,14 @@ app.post('/api/user/login',async (req,res)=>{
     //check if the email exists
     //.findOne intoarce boolean in functie de rezultatul cautarii
     const user = await utilizatorModel.findOne({email:req.body.email})
+    console.log("LOGIN TEST:", user)
+    try{
+        if(user.active == false) return res.status(400).send("Contul nu este activat!")
+    }
+    catch(err)
+    {
+        return res.status(400).send("Contul nu este activat!")
+    }
     if(!user) return res.status(400).send("Utiliatorul cu acest email nu este inregistrat in baza de date!")
 
     // //Password is correct
@@ -85,6 +93,22 @@ app.post('/api/user/login',async (req,res)=>{
     const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
     
     return res.json({token: token});
+})
+
+app.get('/verifica', async (req,res)=>{
+    try{
+        let id = req.query.id;
+        // --> /confirma-cont?id=f34fewf
+        console.log("id confirma:", id)
+        let updateResponse = await utilizatorModel.findOneAndUpdate({_id: id},{active: true})
+        console.log("updateResponse",updateResponse)
+        return res.send(`Cont activat cu succes!`)
+    }
+    catch(err)
+    {
+        console.log("err:")
+        return res.status(400).send("Nu se poate confirma contul!")
+    }
 })
 
 app.post('/api/user/check-token', (req,res)=>{

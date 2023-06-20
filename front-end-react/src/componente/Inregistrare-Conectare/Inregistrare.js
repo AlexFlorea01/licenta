@@ -47,9 +47,39 @@ const Inregistrare = () => {
                 delete dateIntrareSplit.repetaParola
 
                 axios.post('http://localhost:5000/api/user/register',dateIntrareSplit)
-                .then(res=>{
-                    console.log(res)
-                    navigate('/conectare');
+                .then(async(res)=>{
+                    console.log("singup:",res)
+                    let activateAcc = `http://localhost:5000/verifica?id=${res.data.user}`
+                    // let activateAcc = `verifica?id=${res.data.user}`
+                    // let activateAcc = 'aaa'
+                    console.log("activateAcc:",activateAcc)
+
+                     try{
+                        var dataEmail = {
+                            service_id: 'service_v9pog8m',
+                            template_id: 'template_64amchp',
+                            user_id: 'sxkdR8NNcWS2j4F6t',
+                            template_params:{
+                                'to_mail': dateIntrare.email,
+                                'mesaj': activateAcc
+                            }
+                        }
+                        console.log("check:",dataEmail)
+                        let sendResponse = await axios.post('https://api.emailjs.com/api/v1.0/email/send',
+                        {
+                            ...dataEmail
+                        }
+                        )
+                        console.log("response ok:", sendResponse.data)
+                        navigate('/conectare');
+
+                    }
+                    catch(err)
+                    {
+                        alert("Nu se poate crea cont")
+                        console.log("Nu se paote trimite mail:", err)
+                    }
+        
                     
                 })
                 .catch(err=>console.log(err))

@@ -569,7 +569,7 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
             return copy
         })
     }
-    const trimiteReport = ()=>{
+    const trimiteReport = async ()=>{
         if(data.text == ''){
             alert("Completeaza toata campurile")
             return
@@ -581,15 +581,42 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
             motiv: data.motiv
         }
         console.log("pachetReport:",pachetReport)
-        axios.post('http://localhost:5000/api/proprietati/report',{...pachetReport})
-                .then(res=>{
-                    console.log("report re:", res.data)
-                    alert("Anunt raportat cu succes")
-                    setOpenReport(false);
-                })
-            .catch((err)=>{
-                alert("Eroare la raportare anunt!")
-            })
+        // axios.post('http://localhost:5000/api/proprietati/report',{...pachetReport})
+        //         .then(res=>{
+        //             console.log("report re:", res.data)
+        //             alert("Anunt raportat cu succes")
+        //             setOpenReport(false);
+        //         })
+        //     .catch((err)=>{
+        //         alert("Eroare la raportare anunt!")
+        //     })
+        try{
+            var dataEmail = {
+                service_id: 'service_v9pog8m',
+                template_id: 'template_tjn4tfy',
+                user_id: 'sxkdR8NNcWS2j4F6t',
+                template_params:{
+                    'from_name': 'Platforma web',
+                    'reporter': myUserID,
+                    'message': data.text,
+                    'anunt': propID,
+                    'motiv': data.motiv
+                }
+            }
+            console.log("check:",dataEmail)
+            let sendResponse = await axios.post('https://api.emailjs.com/api/v1.0/email/send',
+            {
+                ...dataEmail
+            }
+            )
+            console.log("response ok:", sendResponse.data)
+            alert('Report trimis cu succes!')
+            setOpenReport(false)
+        }
+        catch(err)
+        {
+            console.log("Nu se paote face report:", err)
+        }
     }
     return(
         <div className='report-box'>

@@ -28,8 +28,11 @@ const userSchema = new mongoose.Schema({
     data:{
         type: Date,
         default: Date.now
+    },
+    active:{
+        type: Boolean,
+        default: false
     }
-
 });
 
 

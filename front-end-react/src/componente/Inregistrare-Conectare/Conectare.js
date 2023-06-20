@@ -40,7 +40,10 @@ const Conectare = () => {
                 window.localStorage.setItem('token',res.data.token)
                 navigate('/administrare');
             })
-            .catch(err=>console.log(err))
+            .catch(err=>{
+                alert("Contul nu exista sau nu este activ!")
+                console.log(err)
+            })
         }
     }
 
