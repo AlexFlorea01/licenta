@@ -87,9 +87,7 @@ app.post('/api/user/login',async (req,res)=>{
     console.log("validPass:",validPass)
 
     if(!validPass) return res.status(400).send("Parola Gresita!")
-    //to do
-    //generate token 
-    
+
     const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
     
     return res.json({token: token});
@@ -111,6 +109,7 @@ app.get('/verifica', async (req,res)=>{
     }
 })
 
+///////////////////////////////////////////////////////////
 app.post('/api/user/check-token', (req,res)=>{
     let {token} = req.body;
     console.log("token:", token)
@@ -130,7 +129,7 @@ else
     }
 
 })
-///////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////
 //filtreaza proprietati
 
@@ -281,6 +280,7 @@ app.post('/api/user/newsell',async (req,res)=>{
     }
 })
 
+//////////////////////////////////////////////////////////////////
 app.post('/api/user/ownership', async (req,res)=>{
     let {user, prop} = req.body;
     console.log("ownser ship:", user, prop)
@@ -316,7 +316,7 @@ app.post('/api/user/ownership', async (req,res)=>{
         return res.status(403).send("Wrong owner")
     }
 })
-//////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////
 //acopera partea de gasesteProprietate in pagina Proprietate
 app.post('/api/user/gasesteProprietate',async (req,res)=>{

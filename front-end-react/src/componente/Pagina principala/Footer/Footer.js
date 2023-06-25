@@ -54,6 +54,7 @@ const Footer = () => {
                             <span onClick={()=>{navigate('/conectare')}}>Conectare</span>
                             <span onClick={()=>{navigate('/inregistrare')}}>Înregistrare</span>
                             <span onClick={()=>{navigate('/despre')}}>Despre noi</span>
+                            <span onClick={()=>{navigate('/administrare')}}>Administrare</span>
                         </div>
 
                     </div>

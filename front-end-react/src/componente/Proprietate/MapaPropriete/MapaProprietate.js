@@ -11,7 +11,7 @@ const MapaProprietate = ({lat,long}) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[lat, long]}>
-            <Popup>Locatia proprietatii</Popup>
+            <Popup>Locația proprietății</Popup>
         </Marker>
         </MapContainer>
      );

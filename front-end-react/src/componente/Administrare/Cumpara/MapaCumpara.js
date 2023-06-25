@@ -94,7 +94,7 @@ const MapaCumpara = ({data}) => {
                 localMarkers.markers == null ? null :localMarkers.markers.map((el)=>{
                     return(
                         <Marker icon={decideSelected(el)} position={[el[0], el[1]]}>
-                            <Popup>Seconds location</Popup>
+                            <Popup>Alte proprietăți</Popup>
                         
                         </Marker>
                         

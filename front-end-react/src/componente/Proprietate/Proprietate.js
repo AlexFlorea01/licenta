@@ -199,6 +199,7 @@ const Proprietate = ({data}) => {
         })
         .then(res=>{
             console.log("delete prop ok:", res.data)
+            alert('Proprietate stearsă cu succes!')
             navigate("/")
         })
         .catch((err)=>{
@@ -314,7 +315,7 @@ const Proprietate = ({data}) => {
                             </div>
                         </div>
                         <div className="lower-intro-title">
-                            <span>{data.pret} $</span>
+                            <span>{data.pret} €</span>
                         </div>
                     </div>
                     <div className="property-page-intro-carousel">
@@ -336,7 +337,7 @@ const Proprietate = ({data}) => {
             <div className="property-page-description">
                 <div className="property-description-title">
                     
-                    <span>Descrierea Proprietatii</span>
+                    <span>Descrierea Proprietății</span>
                     <div className="border-separator-desc"></div>
                 </div>
                 <div className="property-description-content">
@@ -347,7 +348,7 @@ const Proprietate = ({data}) => {
                 <div className="overview-padding-container">
                     <div className="title-overview">
                         <div className="title-overview-itself">
-                            <span>Informatii generale</span>
+                            <span>Informații generale</span>
                         </div>
                         <div className="border-separator-desc"></div>
                     </div>
@@ -358,10 +359,10 @@ const Proprietate = ({data}) => {
                                     <img src={RightArrowIcon} alt="right arrow"/>
                                 </div>
                                 <div className="name-elem-row">
-                                    PRET:
+                                    PREȚ:
                                 </div>
                                 <div className="content-elem-row">
-                                    {data.pret} $
+                                    {data.pret} €
                                 </div>
                             </div>
                             
@@ -443,7 +444,7 @@ const Proprietate = ({data}) => {
                                     <img src={RightArrowIcon} alt="right arrow"/>
                                 </div>
                                 <div className="name-elem-row">
-                                    NR BAI:
+                                    NR BĂI:
                                 </div>
                                 <div className="content-elem-row">
                                     {data.bai}
@@ -465,7 +466,7 @@ const Proprietate = ({data}) => {
                                     <img src={RightArrowIcon} alt="right arrow"/>
                                 </div>
                                 <div className="name-elem-row">
-                                    Locatie:
+                                    LOCAȚIE:
                                 </div>
                                 <div className="content-elem-row">
                                     {data.locatie}
@@ -482,11 +483,11 @@ const Proprietate = ({data}) => {
             </div>
             <div className='property-reviews'>
                 <div className='property-reviews-add'>
-                    <h3> Adauga review</h3>
+                    <h3> Adaugă un review:</h3>
                     <textarea
                         onChange={handleTextReview}
                         value={review.text}
-                        placeholder='review...'
+                        placeholder='Review-ul tău...'
                     >
                         
                     </textarea>
@@ -495,14 +496,17 @@ const Proprietate = ({data}) => {
                         <select name="cars" id="cars" onChange={handleRatingChange} value={review.rating}>
                             <option value="1">1</option>
                             <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
                     <button onClick={sendReview}>
-                        Adauga review
+                        Adaugă review
                     </button>
                 </div>
                 <div className='property-reviews-view'>
-                    <h3> Alte reviews</h3>
+                    <h3> Alte review-uri:</h3>
                     {
                         oldReview.map((el)=>{
                             return(
@@ -533,7 +537,7 @@ const Proprietate = ({data}) => {
                                 return !prev;
                             })
                         }}
-                    >Raporteaza</button>
+                    >Raportează</button>
                     
                 </div>
                 {
@@ -543,7 +547,7 @@ const Proprietate = ({data}) => {
             </div>
             <div className="property-others">
                 <div className="others-similar-props">
-                       Alte Proprietati
+                       Alte Proprietăți
                 </div>
                 <div className="border-separator-desc"></div>
                 <div className="other-container">
@@ -559,7 +563,7 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
 
     const [data, setData] = useState({
         text: '',
-        motiv: 'Informatii False' 
+        motiv: 'Informații False' 
     })
 
     const handleDataChange = (e)=>{
@@ -571,7 +575,7 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
     }
     const trimiteReport = async ()=>{
         if(data.text == ''){
-            alert("Completeaza toata campurile")
+            alert("Completează toate câmpurile")
             return
         }
         let pachetReport = {
@@ -581,22 +585,14 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
             motiv: data.motiv
         }
         console.log("pachetReport:",pachetReport)
-        // axios.post('http://localhost:5000/api/proprietati/report',{...pachetReport})
-        //         .then(res=>{
-        //             console.log("report re:", res.data)
-        //             alert("Anunt raportat cu succes")
-        //             setOpenReport(false);
-        //         })
-        //     .catch((err)=>{
-        //         alert("Eroare la raportare anunt!")
-        //     })
+
         try{
             var dataEmail = {
                 service_id: 'service_v9pog8m',
                 template_id: 'template_tjn4tfy',
                 user_id: 'sxkdR8NNcWS2j4F6t',
                 template_params:{
-                    'from_name': 'Platforma web',
+                    'from_name': 'Platforma web - Raportări',
                     'reporter': myUserID,
                     'message': data.text,
                     'anunt': propID,
@@ -621,7 +617,7 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
     return(
         <div className='report-box'>
             <div className='report-box-center'>
-                <h4>Raporteaza </h4>
+                <h4>Raportează </h4>
                 <textarea
                     placeholder='Descrie problema...'
                     name="text"
@@ -633,12 +629,13 @@ const ReportBox = ({myUserID, propID,setOpenReport})=>{
                 <span>Motiv:</span>
                 <select 
                     name="motiv"  
-                    onChange={handleDataChange} 
+                    onChange={handleDataChange}
                     value={data.motiv}>
-                    <option value="Informatii False">Informatii False</option>
-                    <option value="Informatii Eronate">Informatii Eronate</option>
+                    <option value="Informatii False">Informații False</option>
+                    <option value="Informatii Eronate">Informații Eronate</option>
+                    <option value="Altă problemă">Altă problemă</option>
                 </select>
-                <button onClick={trimiteReport}>Trimite report</button>
+                <button onClick={trimiteReport}>Trimite raportul</button>
             </div>
         </div>
     )

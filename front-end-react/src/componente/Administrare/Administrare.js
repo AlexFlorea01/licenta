@@ -66,7 +66,7 @@ const Administrare = () => {
                             className={ecranSelectat == 'cumpara' ? 'selected-span':''}
                             onClick={()=>{schimbaEcranul('cumpara')}}v
                         >
-                            Cumpara
+                            Cumpără
                         </span>
                     </div>
                     <div className="home-nav-sell-container">

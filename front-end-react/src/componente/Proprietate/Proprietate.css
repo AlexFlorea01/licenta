@@ -343,7 +343,8 @@
     outline: none;
     border: none;
     font-weight: bold;
-    color: white;
+    color: rgb(255, 255, 255);
+    background: #d82707;
 }
 .delete-prop:hover 
 {

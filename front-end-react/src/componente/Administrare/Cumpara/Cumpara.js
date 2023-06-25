@@ -217,7 +217,7 @@ const Cumpara = () => {
                         <div className="form-box-container">
                                     <div className="box-title-container">
                                         <span>
-                                            Nr. bai
+                                            Nr. băi
                                         </span>
                                     </div>
                                     <div class="select">

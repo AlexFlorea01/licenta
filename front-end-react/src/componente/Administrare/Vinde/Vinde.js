@@ -37,7 +37,7 @@ const Vinde = () => {
     }
    
     const [showError, setShowError] = useState({
-        text: 'Vinde-ti proprietatea',
+        text: 'Vinde-ți proprietatea',
         className: ''
     });
 
@@ -268,7 +268,7 @@ const Vinde = () => {
                             <div className="form-box-container">
                                 <div className="box-title-container">
                                     <span>
-                                        Pret:
+                                        Preț:
                                     </span>
                                 </div>
                                 <div className="number-input-box">
@@ -293,7 +293,7 @@ const Vinde = () => {
                             <div className="form-box-container">
                                 <div className="box-title-container">
                                     <span>
-                                        Bai:
+                                        Băi:
                                     </span>
                                 </div>
                                 <div className="number-input-box">
@@ -336,7 +336,7 @@ const Vinde = () => {
                         </div>
 
                         <div className='box-title-container' style={{padding: '0px 10px',}}>
-                            <span>Punct marcat pe harta: {dateIntrare.long} long - {dateIntrare.lat} lat</span>
+                            <span>Punct marcat pe hartă: {dateIntrare.long} long - {dateIntrare.lat} lat</span>
                         </div>
 
                         <div className="single-text-area-input">

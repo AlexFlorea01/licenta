@@ -257,7 +257,7 @@ const Cautare = ({changeHomeState}) => {
                             <div className="form-box-container" onClick={handleGenericClick}>
                                 <span style={{color: 'transparent',marginBottom: '5px'}}>spatiu</span>
                                     <div className="box-container-submit-btn">
-                                        <span>{tipCautare == true ? "Locatie": "Filtre"}</span>
+                                        <span>{tipCautare == true ? "Auto-Locație": "Filtre"}</span>
                                     </div>
                             </div>
 

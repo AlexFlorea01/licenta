@@ -32,7 +32,7 @@ const [position, setPosition] = useState(null)
       
         return position === null ? null : (
           <Marker position={position}>
-            <Popup>Locatia proprietatii</Popup>
+            <Popup>Locația proprietății</Popup>
           </Marker>
         )
       }

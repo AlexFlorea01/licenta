@@ -70,7 +70,7 @@ const AlteProprietati = () => {
                                 <div className="other-item-bottom-info">
                                     <div className="other-item-bottom-info-box">
                                         <div className="bottom-info-box-proce-itself">
-                                            <span>{el.pret} $</span>
+                                            <span>{el.pret} €</span>
                                         </div>
                                     </div>
                                     <div className="other-item-bottom-info-box">
