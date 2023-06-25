@@ -7,10 +7,10 @@ import React from'react';
 
 
 const Servicii = () => {
-    const text1 = '1_Imobiliarele se referă la deținerea de bunuri imobile sau active de către o persoană fizică sau o companie, care astfel dobândesc drepturi asupra acesteia și posibilitatea de a obține beneficii din exploatarea sa economică.'
-    const text2 = '2_Imobiliarele se referă la deținerea de bunuri imobile sau active de către o persoană fizică sau o companie, care astfel dobândesc drepturi asupra acesteia și posibilitatea de a obține beneficii din exploatarea sa economică.'
-    const text3 = '3_Imobiliarele se referă la deținerea de bunuri imobile sau active de către o persoană fizică sau o companie, care astfel dobândesc drepturi asupra acesteia și posibilitatea de a obține beneficii din exploatarea sa economică.'
-    const text4 = '4_Imobiliarele se referă la deținerea de bunuri imobile sau active de către o persoană fizică sau o companie, care astfel dobândesc drepturi asupra acesteia și posibilitatea de a obține beneficii din exploatarea sa economică.'
+    const text1 = 'Căutați o casă de vis? Cu noi puteți să descoperiți o oază de confort și liniște, cu design sofisticat și amenajări de înaltă calitate. Transformați-vă visul în realitate!'
+    const text2 = 'Alegeți cu încredere din selecția noastră de proprietăți verificate. Echipa noastră de experți a inspectat fiecare detaliu, asigurându-vă că veți găsi calitate și autenticitate în fiecare proprietate.'
+    const text3 = 'Bucurați-vă de confortul și eleganța mobilierului nou-nouț în fiecare proprietate. Designul modern și atenția la detalii vă vor impresiona, transformând fiecare casă într-un cămin plin de stil.'
+    const text4 = 'Explorați orice proprietate în ritmul dumneavoastră! Cu opțiunea de vizionare disponibilă 24 de ore pe zi, 7 zile pe săptămână, puteți programa vizitele în funcție de programul dumneavoastră.'
     return (  
         <div className="best-services-container">
             <div className="best-services-title">
@@ -29,9 +29,9 @@ const Servicii = () => {
             </div>
             <div className="best-services-cards-container">
                 <CardServices icon={HomeIcon} title='Găsește-ți casa visurilor' description={text1}/>
-                <CardServices icon={PadLock} title='Proprietăți securizate' description={text2}/>
-                <CardServices icon={SettingsIcon} title='Mobilare inclusă' description={text3}/>
-                <CardServices icon={GoalIcon} title='Suport online' description={text4}/>
+                <CardServices icon={PadLock} title='Proprietăți verificate' description={text2}/>
+                <CardServices icon={SettingsIcon} title='Mobilier nou' description={text3}/>
+                <CardServices icon={GoalIcon} title='Vizionare 24/7' description={text4}/>
             </div>
         </div>
     );

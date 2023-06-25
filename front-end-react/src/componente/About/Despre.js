@@ -8,15 +8,20 @@ const Despre = () => {
             <Meniu/>
             <div className="about-content">
                 <div className="about-content-title">
-                    <span>Cum am inceput...</span>
+                    <span>Cine suntem noi?</span>
                 </div>
                 <div className="about-content-content">
                     <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alex Imobiliare este principalul investitor și dezvoltator imobiliare de proiecte sustenabile rezidentiale, de birouri și mixte de ultimă generație din București, Romania. Compania este cunoscută sub brandul high-end ONE, sinonim cu calitate, design, comunitate, durabilitate și cele mai căutate și dorite locații. 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bine ați venit la Alex Imobiliare! Suntem o echipă dedicată și pasionată de domeniul imobiliar, specializată în oferirea unor servicii de calitate și satisfacție maximă clienților noștri. De-a lungul anilor, am reușit să construim o reputație solidă în industrie, făcând din noi partenerul de încredere pentru găsirea proprietății perfecte.
+<br />
 
-                    Compania a fost înființată la sfârșitul anului 2007, de către Victor Capitanu și Andrei Diaconescu, în urma exit-ului acestora din Capital Partners, companie independentă de investment banking, pe care fondatorii au vândut-o către Banca Transilvania în 2016. Încă de la începutul afacerii în 2008 până în prezent, cei doi fondatori au fost implicați în activitatea de zi cu zi a companiei One United Properties, în calitate de co-CEO și membri executivi ai Consiliului de Administrație.
-
-                    Obiectivul One United Properties este să îmbunătățească comunitățile existente și să construiască noi comunități prin dezvoltarea de clădiri de calitate, eficiente din punct de vedere energetic, generând totodată o creștere a valorii pe termen lung pentru acționari. One United Properties este pionier în promovarea conceptul de dezvoltare cu utilizare mixtă în România, fiind cel mai important jucător pe acest segment de pe piața locală.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La Alex Imobiliare, punem accentul pe atingerea viselor clienților noștri. Indiferent dacă sunteți în căutarea casei ideale sau doriți să investiți într-o proprietate, suntem aici pentru a vă oferi expertiza și suportul necesare în fiecare pas al procesului.
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Echipa noastră este formată din profesioniști experimentați, care împărtășesc o pasiune comună pentru domeniul imobiliar. Ne dedicăm fiecare zi pentru a vă oferi servicii personalizate, asigurându-ne că ne înțelegem cu adevărat nevoile și dorințele dumneavoastră.
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La Alex Imobiliare, valorile noastre sunt transparența, integritatea și excelența în servicii. Suntem mereu în căutarea celor mai bune soluții și inovări pentru a vă oferi cea mai bună experiență în căutarea și achiziționarea proprietății dorite.
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ne bucurăm să facem parte din călătoria dumneavoastră în găsirea proprietății perfecte și vă invităm să ne contactați pentru a discuta despre cum vă putem ajuta să vă realizați visele imobiliare.
                     </span>
                 </div>
             </div>

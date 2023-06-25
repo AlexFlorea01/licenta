@@ -65,14 +65,13 @@ const Meniu = () => {
                         <a href="#">Contul tău &#9660;</a>
                         <ul class="sub-menu">
                             <li><a onClick={()=>{navigate('/conectare')}}>Conectare</a></li>
-                            <li><a onClick={()=>{navigate('/inregistrare')}}>Inregistrare</a></li>
+                            <li><a onClick={()=>{navigate('/inregistrare')}}>Înregistrare</a></li>
                         </ul>
                         </li>
                         <li class="sub-menu-parent" tab-index="0">
                         <a href="#">Despre noi &#9660;</a>
                         <ul class="sub-menu">
-                            <li><a onClick={()=>{navigate('/despre')}}>Cum am inceput..</a></li>
-                            <li><a onClick={()=>{navigate('/despre')}}>Unde ne gasesti..</a></li>
+                            <li><a onClick={()=>{navigate('/despre')}}>Cine suntem noi?</a></li>
                         </ul>
                         </li>
 
