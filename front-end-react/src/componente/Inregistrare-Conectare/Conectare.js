@@ -73,7 +73,7 @@ const Conectare = () => {
                                     <button onClick={trimiteModifIntrari}>Conectare</button>
                                 </label>
                                 <label className="change-state-signin-signup">
-                                    <p onClick={()=>{navigate('/inregistrare')}}>Nu ai deja un cont? Inregistreaza-te.</p>
+                                    <p onClick={()=>{navigate('/inregistrare')}}>Nu ai deja un cont? Înregistrează-te.</p>
                                 </label>
                         </form>
                         </div>

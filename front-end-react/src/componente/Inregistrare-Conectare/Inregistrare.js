@@ -95,7 +95,7 @@ const Inregistrare = () => {
                 <div className="sign-up-container-center-form">
                     <div className="sign-up-container-title">
                         <div className="sign-up-title-padding">
-                            <span>Inregistrare</span>
+                            <span>Înregistrare</span>
                         </div>
                     </div>
                     <div className="sign-up-container-form-container">
@@ -114,14 +114,14 @@ const Inregistrare = () => {
                                     <input type="password" name="parola" onChange={schimbaDateIntrare}/>
                                 </label>
                                 <label>
-                                    <span>Repeta parola</span>
+                                    <span>Repetă parola</span>
                                     <input type="password" name="repetaParola" onChange={schimbaDateIntrare}/>
                                 </label>
                                 <label className="submit-btn-label">
-                                    <button onClick={trimiteModifIntrari}>Inregistrare</button>
+                                    <button onClick={trimiteModifIntrari}>Înregistrare</button>
                                 </label>
                                 <label className="change-state-signin-signup">
-                                    <p onClick={()=>{navigate('/conectare')}}>Ai deja un cont?Conecteaza-te.</p>
+                                    <p onClick={()=>{navigate('/conectare')}}>Ai deja un cont?Conectează-te.</p>
                                 </label>
                         </form>
                         </div>
