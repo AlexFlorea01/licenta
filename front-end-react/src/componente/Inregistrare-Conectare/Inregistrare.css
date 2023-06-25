@@ -19,7 +19,7 @@
 }
 
 .sign-up-container-center-form {
-    width: 30%;
+    width: 35%;
     border-radius: 10px;
     background-color: rgb(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
@@ -129,4 +129,17 @@
 .change-state-signin-signup p:hover {
     color: white;
     transition: color 0.3s ease;
+}
+
+/* mobile */
+@media only screen and (max-width: 650px) {
+.sign-up-container-center-form {
+    width: 65%;
+}
+}
+
+@media only screen and (max-width: 420px) {
+.sign-up-container-center-form {
+        width: 80%;
+    }
 }

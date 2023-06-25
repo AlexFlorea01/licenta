@@ -17,6 +17,8 @@
 
 .search-result-item {
     height: 180px;
+    margin-left: 40px;
+    margin-right: 40px;
     display: flex;
     flex-direction: row;
     -webkit-box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.62);

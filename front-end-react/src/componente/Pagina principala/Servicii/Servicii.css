@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 .best-services-container {
-    height: 90vh;
+    height: auto;
     padding-bottom: 50px ;
+    padding-top: 50px;
 }
 
 .best-services-title {
@@ -13,11 +14,13 @@
 }
 
 .best-services-align-under-search {
-    height: 60%;
+    margin-top: 50px;
+    padding: 40px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .best-services-align-title-center {
@@ -30,6 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .best-services-main-title span {
@@ -47,25 +51,30 @@
     align-items: center;
     color: rgb(109, 109, 109);
     font-size: 0.9em;
+    text-align: center;
+    margin: 10px;
 }
 
 
 
 .best-services-cards-container {
-    height: 65%;
+    height: auto;
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
     flex-direction: row;
-    padding: 0px 10px;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .card-container {
-    height: 100%;
-    flex: 1;
-
-    padding: 10px 20px;
+    min-height: 400px;
+    width: 360px;
+    padding: 10px;
 }
 
 .card-container-padding {
+    min-height: 400px;
     height: 100%;
     width: 100%;
     border: 2px solid rgb(211, 211, 211);
@@ -78,10 +87,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 .card-container-icon-section img {
-    height: 50%;
+    height: 45px;
+    margin: 20px;
+    object-fit: contain;
 }
 
 .card-container-title-section {
@@ -102,10 +114,32 @@
 
 .card-container-content-section {
     height: 60%;
-    padding: 20px;
+    padding: 15px;
 }
 
 .card-container-content-section span {
     color: rgb(117, 117, 117);
     font-family: 'Poppins', sans-serif;
+}
+
+/* mobile */
+
+@media only screen and (max-width: 1200px) {
+.best-services-align-under-search
+{
+    margin-top: 160px;
+}
+}
+
+
+@media only screen and (max-width: 700px) {
+    .best-services-align-under-search {
+        margin-top: 240px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .best-services-align-under-search {
+        margin-top: 600px;
+    }
 }

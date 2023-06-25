@@ -19,7 +19,7 @@
 
 .left-footer-content {
     height: 100%;
-    width: 30%;
+    width: 40%;
 }
 
 .left-footer-content img {
@@ -37,10 +37,11 @@
 
 .right-footer-content {
     height: 100%;
-    width: 70%;
+    width: 60%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding: 0px 40px;
 }
 
 .social-media-footer-container {
@@ -64,7 +65,7 @@
 
 .right-footer-link-category {
     height: 90%;
-    width: 50%;
+    width: 100%;
 }
 
 .right-footer-links-title {
@@ -90,4 +91,20 @@
     color: white;
     margin-left: 5px;
     transition: color 0.4s ease, margin-left 0.5s ease;
+}
+
+/* mobile */
+@media only screen and (max-width: 1000px) {
+.footer-container-padding {
+        flex-direction: column;
+}
+.left-footer-content
+{
+    width: 100%;
+
+}
+.right-footer-content
+{
+    width: 100%;
+}
 }
