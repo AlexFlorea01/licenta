@@ -37,8 +37,8 @@ const Meniu = () => {
                     </div>
                 </div>
                 <div className="right-upper-menu">
-                    <button id="signup-btn" onClick={()=>{navigate('/inregistrare')}}> 
-                        Înregistrare
+                    <button id="signup-btn" onClick={()=>{navigate('/administrare')}}> 
+                        Administrare
                     </button>
                 </div>
             </div>
