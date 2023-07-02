@@ -304,7 +304,7 @@ const Proprietate = ({data}) => {
                             </div>
                             <div className="upper-title-infos">
                                 {
-                                    myProp == true ? <button className="delete-prop" onClick={deleteProp}>Delete</button> : null
+                                    myProp == true ? <button className="delete-prop" onClick={deleteProp}>Șterge</button> : null
                                 }
                                 <div className="upper-infos-box bg-orange">
                                     {data.status}

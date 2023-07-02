@@ -126,12 +126,12 @@ const Cautare = ({changeHomeState}) => {
                                 <div class="select">
                                     <select onChange={schimbaDateIntrare} name="locatie">
                                         <option value="">-</option>
-                                        <option value="Iasi">Iasi</option>
-                                        <option value="Bucuresti">Bucuresti</option>
+                                        <option value="Iasi">Iași</option>
+                                        <option value="Bucuresti">București</option>
                                         <option value="Cluj">Cluj</option>
-                                        <option value="Brasov">Brasov</option>
-                                        <option value="Sibiu">Sibiu</option>
-                                        <option value="Altele">Alta locatie</option>
+                                        <option value="Brasov">Brașov</option>
+                                        <option value="Timișoara">Timișoara</option>
+                                        <option value="Altele">Altă locatie</option>
                                     </select>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@ const Cautare = ({changeHomeState}) => {
                             <div className="form-box-container" onClick={handleGenericClick}>
                                 <span style={{color: 'transparent',marginBottom: '5px'}}>spatiu</span>
                                     <div className="box-container-submit-btn">
-                                        <span>{tipCautare == true ? "Auto-Locație": "Filtre"}</span>
+                                        <span>{tipCautare == true ? "Auto-Locație": "Caută"}</span>
                                     </div>
                             </div>
 
