@@ -466,23 +466,6 @@ app.post('/api/proprietati/review', async(req,res)=>{
     }
 
 })
-app.post("/api/proprietati/report",async(req,res)=>{
-    let {
-    submitter,
-    anunt,
-    text,
-    motiv
-    } = req.body;
-
-    console.log("report api:",submitter,
-    anunt,
-    text,
-    motiv)
-
-    // TODO: trimite mail la administrator cu continutul reportului;
-    
-    return res.status(200).send("Raportat cu succes")
-})
 
 //acopera partea de Alte Proprietati
 app.get('/api/user/AlteProprietati',async (req,res)=>{
