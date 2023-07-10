@@ -130,7 +130,7 @@ const Cautare = ({changeHomeState}) => {
                                         <option value="Bucuresti">București</option>
                                         <option value="Cluj">Cluj</option>
                                         <option value="Brasov">Brașov</option>
-                                        <option value="Timișoara">Timișoara</option>
+                                        <option value="Timisoara">Timisoara</option>
                                         <option value="Altele">Altă locatie</option>
                                     </select>
                                 </div>

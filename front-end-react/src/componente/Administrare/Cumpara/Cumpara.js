@@ -114,7 +114,7 @@ const Cumpara = () => {
                                         <option value="Bucuresti">Bucuresti</option>
                                         <option value="Cluj">Cluj</option>
                                         <option value="Brasov">Brasov</option>
-                                        <option value="Sibiu">Sibiu</option>
+                                        <option value="Timisoara">Timisoara</option>
                                         <option value="Altele">Alta locatie</option>
                                     </select>
                                 </div>
